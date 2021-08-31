@@ -100,7 +100,7 @@ class _MapServiceState extends State<MapService> {
                 children: [
                   Expanded(
                     flex: 2,
-                      child: Text(currentAddress)),
+                      child: Text(currentAddress,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
                   SizedBox(width: 8,),
                   Expanded(
                     flex: 1,
@@ -108,7 +108,7 @@ class _MapServiceState extends State<MapService> {
                         onPressed: () {
                           _determinePosition();
                         },
-                        child: Text('Locate me')),
+                        child: Text('Locate me',style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold ),)),
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,9 +8,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginService loginService = Provider.of<LoginService>(context, listen: false);
     return Scaffold(
+        drawer: Drawer(
+            child: SideBar()
+        ),
       appBar: AppBar(
         title: Text('Home'),
         centerTitle: true,
+        actions: [
+          loginService.isUserLoggedIn()?
+          IconButton(icon: Icon(Icons.live_tv_sharp), onPressed: () {  },):
+          IconButton(icon: Icon(Icons.block), onPressed: () {  },)
+        ],
       ),
       body: Center(
         child: Container(

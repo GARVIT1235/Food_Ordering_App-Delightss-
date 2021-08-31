@@ -1,7 +1,6 @@
 import 'package:Delightss/Services/Map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart' ;
 
 class DetailPage extends StatefulWidget {
   @override
@@ -27,6 +26,9 @@ class _DetailPageState extends State<DetailPage> {
           backgroundColor: Colors.deepOrange,
           title: Text('User Detail',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
           elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30))),
           centerTitle: true,
         ),
         body: Container(
@@ -111,15 +113,11 @@ class _DetailPageState extends State<DetailPage> {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter Date of Birth';
                                   }
-                                  if (value.length!=10) {
+                                  if (value.length!=10 ) {
                                     return 'Enter in Format';
                                   }
                                   return null;
                                 },
-                                inputFormatters: [
-                                  MaskedInputFormatter('00-00-####',
-                                      allowedCharMatcher : RegExp(r'^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$'))
-                                ],
                                 decoration: InputDecoration(
                                   hintText: 'Date of Birth : DD/MM/YYYY',
                                   border: InputBorder.none,
