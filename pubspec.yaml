@@ -24,13 +24,13 @@ dependencies:
   geocoding:
   flutter_map:
   fluttertoast:
+  path_provider:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
 
   assets:
