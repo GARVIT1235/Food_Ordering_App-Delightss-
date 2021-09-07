@@ -1,8 +1,6 @@
 import 'package:Delightss/Services/File.dart';
-import 'package:Delightss/Services/Login.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -12,8 +10,11 @@ class SplashPage extends StatefulWidget {
 class SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
+    DirFile file = DirFile();
     Future.delayed(Duration(seconds: 2), () async {
-      if (false)
+      file.createDir();
+      Future<String> txt = file.readFile;
+      if (txt == '1')
         Navigator.of(context).pushReplacementNamed('/home');
       else
         Navigator.of(context).pushReplacementNamed('/login');
