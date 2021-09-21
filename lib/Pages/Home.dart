@@ -1,5 +1,6 @@
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Widgets/Drawer.dart';
+import 'package:Delightss/Widgets/appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,26 +9,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginService loginService =
         Provider.of<LoginService>(context, listen: false);
-    String imgPath = loginService.loggedInUserModel != null
-        ? loginService.loggedInUserModel.photoUrl
-        : '';
     return Scaffold(
         drawer: Drawer(child: SideBar()),
-        appBar: AppBar(
-          title: Text('Home'),
-          centerTitle: true,
-          actions: [
-            loginService.isUserLoggedIn()
-                ? Container(
-                    margin: EdgeInsets.only(right: 10),
-                    padding: EdgeInsets.all(10),
-                    child: ClipOval(child: Image.network(imgPath)))
-                : IconButton(
-                    icon: Icon(Icons.block),
-                    onPressed: () {},
-                  )
-          ],
-        ),
+        appBar: MainAppBar(),
         body: Center(
           child: Container(
               height: 60,
