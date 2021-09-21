@@ -1,4 +1,3 @@
-import 'package:Delightss/Models/users.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -20,7 +19,6 @@ class _DetailPageState extends State<DetailPage> {
   TextEditingController dob = TextEditingController();
   String gender = 'Male';
   TextEditingController phone = TextEditingController();
-  UserModel _userModel;
   final _formKey = GlobalKey<FormState>();
 
   String currentAddress = 'Current Address';
