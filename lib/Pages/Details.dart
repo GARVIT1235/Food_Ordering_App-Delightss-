@@ -1,4 +1,6 @@
+import 'package:Delightss/Models/regUser.dart';
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Services/regUser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';

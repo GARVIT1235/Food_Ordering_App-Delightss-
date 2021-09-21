@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons:
+  carousel_pro:
   google_fonts:
   animated_text_kit:
   firebase_core:

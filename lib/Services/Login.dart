@@ -5,9 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+Map<String, String> map = Map();
+
 class LoginService extends ChangeNotifier {
   LoginUserModel _userModel;
-
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   addUserToFirestore(Map usersModel) {
     firebaseFirestore
@@ -20,7 +21,7 @@ class LoginService extends ChangeNotifier {
     firebaseFirestore
         .collection("userRegister")
         .doc(loggedInUserModel.uid)
-        .set({"detail": "Yes"});
+        .set({"Details": (map['details'] = 'Yes')});
   }
 
   DirFile file = DirFile();
