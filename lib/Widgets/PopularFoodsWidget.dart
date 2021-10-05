@@ -91,13 +91,25 @@ class PopularFoodTiles extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Center(
                                 child: Image.asset(
-                              'assets/images/' +
-                                  imageUrl +
-                                  ".png",
+                              'assets/images/' + imageUrl + ".png",
                               width: 130,
                               height: 140,
                             )),
                           )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 5, top: 5),
+                            child: Text(name,
+                                style: TextStyle(
+                                    color: Color(0xFF6e6e71),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500)),
+                          ),
                         ],
                       ),
                       Row(
@@ -128,10 +140,84 @@ class PopularFoodTiles extends StatelessWidget {
                                       offset: Offset(0.0, 0.75),
                                     ),
                                   ]),
+                              child: Icon(
+                                Icons.near_me,
+                                color: Color(0xFFfb3132),
+                                size: 16,
+                              ),
                             ),
                           ),
                         ],
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                alignment: Alignment.topLeft,
+                                padding: EdgeInsets.only(left: 5, top: 5),
+                                child: Text(rating,
+                                    style: TextStyle(
+                                        color: Color(0xFF6e6e71),
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400)),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(top: 3, left: 5),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      size: 10,
+                                      color: Color(0xFFfb3132),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 10,
+                                      color: Color(0xFFfb3132),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 10,
+                                      color: Color(0xFFfb3132),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 10,
+                                      color: Color(0xFFfb3132),
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 10,
+                                      color: Color(0xFF9b9b9c),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.topLeft,
+                                padding: EdgeInsets.only(left: 5, top: 5),
+                                child: Text("($numberOfRating)",
+                                    style: TextStyle(
+                                        color: Color(0xFF6e6e71),
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400)),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                            child: Text('\$' + price,
+                                style: TextStyle(
+                                    color: Color(0xFF6e6e71),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600)),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 )),
@@ -178,46 +264,55 @@ class PopularFoodItems extends StatelessWidget {
             name: "Fried Egg",
             imageUrl: "ic_popular_food_2",
             numberOfRating: '200',
+            price: '150.06',
             slug: "fried_egg"),
         PopularFoodTiles(
             name: "Mixed Vegetable",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "100",
+            price: '105.06',
             slug: ""),
         PopularFoodTiles(
             name: "Salad With Chicken",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "50",
+            price: '1050.06',
             slug: ""),
         PopularFoodTiles(
             name: "Mixed Salad",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "100",
+            price: '1578.06',
             slug: ""),
         PopularFoodTiles(
             name: "Red meat,Salad",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "150",
+            price: '1592.06',
             slug: ""),
         PopularFoodTiles(
             name: "Mixed Salad",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "100",
+            price: '1519.06',
             slug: ""),
         PopularFoodTiles(
             name: "Potato,Meat fry",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "70",
+            price: '1235.06',
             slug: ""),
         PopularFoodTiles(
             name: "Fried Egg",
             imageUrl: "ic_popular_food_2",
             numberOfRating: '200',
+            price: '1152.06',
             slug: "fried_egg"),
         PopularFoodTiles(
             name: "Red meat,Salad",
             imageUrl: "ic_popular_food_2",
             numberOfRating: "150",
+            price: '1152.06',
             slug: ""),
       ],
     );

@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons:
-  carousel_pro:
   google_fonts:
   animated_text_kit:
   firebase_core:
@@ -26,6 +25,7 @@ dependencies:
   flutter_map:
   fluttertoast:
   path_provider:
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:

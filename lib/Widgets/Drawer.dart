@@ -58,6 +58,58 @@ class SideBar extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20))
                               ],
+                            ))),
+                    Visibility(
+                        visible: true,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.home, color: Colors.white, size: 20),
+                                SizedBox(width: 10),
+                                Text('Home',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))
+                              ],
+                            ))),
+                    Visibility(
+                        visible: true,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.home, color: Colors.white, size: 20),
+                                SizedBox(width: 10),
+                                Text('Order ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))
+                              ],
+                            ))),
+                    Visibility(
+                        visible: true,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.home, color: Colors.white, size: 20),
+                                SizedBox(width: 10),
+                                Text('Cart ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))
+                              ],
+                            ))),
+                    Visibility(
+                        visible: true,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.home, color: Colors.white, size: 20),
+                                SizedBox(width: 10),
+                                Text('Setting ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20))
+                              ],
                             )))
                   ],
                 ),
