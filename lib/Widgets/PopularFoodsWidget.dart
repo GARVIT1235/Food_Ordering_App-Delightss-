@@ -110,20 +110,6 @@ class PopularFoodTiles extends StatelessWidget {
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500)),
                           ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            alignment: Alignment.bottomLeft,
-                            padding: EdgeInsets.only(left: 5, top: 5),
-                            child: Text(name,
-                                style: TextStyle(
-                                    color: Color(0xFF6e6e71),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500)),
-                          ),
                           Container(
                             alignment: Alignment.topRight,
                             padding: EdgeInsets.only(right: 5),
@@ -141,7 +127,7 @@ class PopularFoodTiles extends StatelessWidget {
                                     ),
                                   ]),
                               child: Icon(
-                                Icons.near_me,
+                                Icons.assignment_rounded,
                                 color: Color(0xFFfb3132),
                                 size: 16,
                               ),

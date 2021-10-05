@@ -99,88 +99,86 @@ class BestFoodTiles extends StatelessWidget {
 class BestFoodList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView(
-        children: <Widget>[
-          BestFoodTiles(
-              name: "Fried Egg",
-              imageUrl: "ic_best_food_8",
-              rating: '4.9',
-              numberOfRating: '200',
-              price: '150.06',
-              slug: "fried_egg"),
-          BestFoodTiles(
-              name: "Mixed vegetable",
-              imageUrl: "ic_best_food_8",
-              rating: "4.9",
-              numberOfRating: "100",
-              price: "170.03",
-              slug: ""),
-          BestFoodTiles(
-              name: "Salad with chicken meat",
-              imageUrl: "ic_best_food_8",
-              rating: "4.0",
-              numberOfRating: "50",
-              price: "110.00",
-              slug: ""),
-          BestFoodTiles(
-              name: "New mixed salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.00",
-              numberOfRating: "100",
-              price: "110.10",
-              slug: ""),
-          BestFoodTiles(
-              name: "Red meat with salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.6",
-              numberOfRating: "150",
-              price: "120.00",
-              slug: ""),
-          BestFoodTiles(
-              name: "New mixed salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.00",
-              numberOfRating: "100",
-              price: "110.10",
-              slug: ""),
-          BestFoodTiles(
-              name: "Potato with meat fry",
-              imageUrl: "ic_best_food_8",
-              rating: "4.2",
-              numberOfRating: "70",
-              price: "230.0",
-              slug: ""),
-          BestFoodTiles(
-              name: "Fried Egg",
-              imageUrl: "ic_best_food_8",
-              rating: '4.9',
-              numberOfRating: '200',
-              price: '150.06',
-              slug: "fried_egg"),
-          BestFoodTiles(
-              name: "Red meat with salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.6",
-              numberOfRating: "150",
-              price: "120.00",
-              slug: ""),
-          BestFoodTiles(
-              name: "Red meat with salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.6",
-              numberOfRating: "150",
-              price: "120.00",
-              slug: ""),
-          BestFoodTiles(
-              name: "Red meat with salad",
-              imageUrl: "ic_best_food_8",
-              rating: "4.6",
-              numberOfRating: "150",
-              price: "120.00",
-              slug: ""),
-        ],
-      ),
+    return ListView(
+      children: <Widget>[
+        BestFoodTiles(
+            name: "Fried Egg",
+            imageUrl: "ic_best_food_8",
+            rating: '4.9',
+            numberOfRating: '200',
+            price: '150.06',
+            slug: "fried_egg"),
+        BestFoodTiles(
+            name: "Mixed vegetable",
+            imageUrl: "ic_best_food_8",
+            rating: "4.9",
+            numberOfRating: "100",
+            price: "170.03",
+            slug: ""),
+        BestFoodTiles(
+            name: "Salad with chicken meat",
+            imageUrl: "ic_best_food_8",
+            rating: "4.0",
+            numberOfRating: "50",
+            price: "110.00",
+            slug: ""),
+        BestFoodTiles(
+            name: "New mixed salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.00",
+            numberOfRating: "100",
+            price: "110.10",
+            slug: ""),
+        BestFoodTiles(
+            name: "Red meat with salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.6",
+            numberOfRating: "150",
+            price: "120.00",
+            slug: ""),
+        BestFoodTiles(
+            name: "New mixed salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.00",
+            numberOfRating: "100",
+            price: "110.10",
+            slug: ""),
+        BestFoodTiles(
+            name: "Potato with meat fry",
+            imageUrl: "ic_best_food_8",
+            rating: "4.2",
+            numberOfRating: "70",
+            price: "230.0",
+            slug: ""),
+        BestFoodTiles(
+            name: "Fried Egg",
+            imageUrl: "ic_best_food_8",
+            rating: '4.9',
+            numberOfRating: '200',
+            price: '150.06',
+            slug: "fried_egg"),
+        BestFoodTiles(
+            name: "Red meat with salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.6",
+            numberOfRating: "150",
+            price: "120.00",
+            slug: ""),
+        BestFoodTiles(
+            name: "Red meat with salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.6",
+            numberOfRating: "150",
+            price: "120.00",
+            slug: ""),
+        BestFoodTiles(
+            name: "Red meat with salad",
+            imageUrl: "ic_best_food_8",
+            rating: "4.6",
+            numberOfRating: "150",
+            price: "120.00",
+            slug: ""),
+      ],
     );
   }
 }
