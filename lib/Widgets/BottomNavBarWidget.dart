@@ -12,8 +12,8 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     void _onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
-//        navigateToScreens(index);
       });
+      navigateToScreens(_selectedIndex);
     }
 
     return BottomNavigationBar(
@@ -24,34 +24,47 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           icon: Icon(Icons.home),
           title: Text(
             'Home',
-            style: TextStyle(color: Color(0xFF2c2b2b)),
+            style: TextStyle(color: Colors.deepOrange),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.offline_pin_rounded),
           title: Text(
             'Order',
-            style: TextStyle(color: Color(0xFF2c2b2b)),
+            style: TextStyle(color: Colors.deepOrange),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.card_giftcard),
           title: Text(
             'Cart',
-            style: TextStyle(color: Color(0xFF2c2b2b)),
+            style: TextStyle(color: Colors.deepOrange),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.supervised_user_circle),
           title: Text(
             'Account',
-            style: TextStyle(color: Color(0xFF2c2b2b)),
+            style: TextStyle(color: Colors.deepOrange),
           ),
         ),
       ],
       currentIndex: _selectedIndex,
-      selectedItemColor: Color(0xFFfd5352),
+      selectedItemColor: Color(0xFF2c2b2b),
       onTap: _onItemTapped,
     );
+  }
+
+  Function navigateToScreens(int index) {
+    switch (index) {
+      case 1:
+        return () => Navigator.of(context).pushNamed('/home');
+      case 2:
+        return () => Navigator.of(context).pushNamed('/order');
+      case 3:
+        return () => Navigator.of(context).pushNamed('/cart');
+      case 4:
+        return () => Navigator.of(context).pushNamed('/setting');
+    }
   }
 }

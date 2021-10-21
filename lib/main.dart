@@ -3,7 +3,10 @@ import 'package:Delightss/Pages/Details.dart';
 import 'package:Delightss/Pages/Home.dart';
 import 'package:Delightss/Pages/Login.dart';
 import 'package:Delightss/Pages/Setting.dart';
+import 'package:Delightss/Services/BestFood.dart';
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Services/PopularFood.dart';
+import 'package:Delightss/Services/slider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,9 +18,12 @@ import 'Pages/SplashScreen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => LoginService())],
-      child: MyApp()));
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => LoginService()),
+    Provider(create: (_) => PopularService()),
+    Provider(create: (_) => BestService()),
+    Provider(create: (_) => SliderService()),
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

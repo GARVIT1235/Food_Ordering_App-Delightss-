@@ -1,6 +1,5 @@
-import 'package:Delightss/Models/regUser.dart';
+import 'dart:convert';
 import 'package:Delightss/Services/Login.dart';
-import 'package:Delightss/Services/regUser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
@@ -8,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class DetailPage extends StatefulWidget {
   @override
@@ -396,10 +396,29 @@ class _DetailPageState extends State<DetailPage> {
       map["phone"] = phone.text;
       loginService.addUserToFirestore(map);
       loginService.registerToFirestore();
-      Navigator.of(context).pushReplacementNamed('/home');
-      sendEmail();
-    }
-  }
 
-  Future<void> sendEmail() async {}
+      final String name = loginService.loggedInUserModel.displayName;
+      final String email = loginService.loggedInUserModel.email;
+      print(name + " " + email);
+
+      final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+      final response = await http.post(url,
+          headers: {
+            'origin': 'http://localhost',
+            'Content-Type': 'application/json'
+          },
+          body: json.encode({
+            'service_id': 'service_eb2z5vt',
+            'template_id': 'template_9la8q3p',
+            'user_id': 'user_5nMNcRFyU1t3IkElqLycn',
+            'template_param': {
+              'to_name': name.toString(),
+              'to_email': email.toString(),
+              'user_email': 'ramvarshney544.com',
+            }
+          }));
+      print(response.body);
+    }
+    Navigator.of(context).pushReplacementNamed('/home');
+  }
 }

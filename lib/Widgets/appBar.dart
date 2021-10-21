@@ -1,13 +1,14 @@
 import 'package:Delightss/Services/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'SearchWidget.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   MainAppBarState createState() => MainAppBarState();
 
   @override
-  Size get preferredSize => new Size.fromHeight(80);
+  Size get preferredSize => new Size.fromHeight(190);
 }
 
 class MainAppBarState extends State<MainAppBar> {
@@ -19,8 +20,13 @@ class MainAppBarState extends State<MainAppBar> {
         ? loginService.loggedInUserModel.photoUrl
         : '';
     return AppBar(
-      title: Text('Home'),
-      centerTitle: true,
+      title: TextButton.icon(
+          onPressed: () {},
+          icon: Icon(Icons.location_on_sharp, color: Colors.black),
+          label: Text(
+            'address',
+            style: TextStyle(color: Colors.black),
+          )),
       actions: [
         loginService.isUserLoggedIn()
             ? Container(
@@ -32,6 +38,7 @@ class MainAppBarState extends State<MainAppBar> {
                 onPressed: () {},
               )
       ],
+      flexibleSpace: SearchWidget(),
     );
   }
 }

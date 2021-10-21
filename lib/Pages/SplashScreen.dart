@@ -1,6 +1,9 @@
-import 'package:Delightss/Services/File.dart';
+import 'package:Delightss/Services/BestFood.dart';
+import 'package:Delightss/Services/PopularFood.dart';
+import 'package:Delightss/Services/slider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -10,15 +13,20 @@ class SplashPage extends StatefulWidget {
 class SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    DirFile file = DirFile();
-    Future.delayed(Duration(seconds: 2), () async {
-      file.createDir();
-      Future<String> txt = file.readFile;
-      if (txt == '1')
-        Navigator.of(context).pushReplacementNamed('/home');
-      else
+    PopularService cat1Service =
+        Provider.of<PopularService>(context, listen: false);
+    BestService cat2Service = Provider.of<BestService>(context, listen: false);
+    SliderService cat3Service =
+        Provider.of<SliderService>(context, listen: false);
+
+    Future.delayed(Duration(seconds: 4), () async {
+      cat1Service.getCategoriesCollectionFromFirebase();
+      cat3Service.getCategoriesCollectionFromFirebase();
+      cat2Service.getCategoriesCollectionFromFirebase().then((value) {
         Navigator.of(context).pushReplacementNamed('/login');
+      });
     });
+
     final X = MediaQuery.of(context).size.width;
     final Y = MediaQuery.of(context).size.height;
     return Scaffold(

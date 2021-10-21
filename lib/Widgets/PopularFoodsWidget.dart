@@ -1,4 +1,7 @@
+import 'package:Delightss/Models/Popular.dart';
+import 'package:Delightss/Services/PopularFood.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PopularFoodsWidget extends StatefulWidget {
   @override
@@ -29,17 +32,17 @@ class PopularFoodTiles extends StatelessWidget {
   String rating;
   String numberOfRating;
   String price;
-  String slug;
+  String IsVeg;
 
-  PopularFoodTiles(
-      {Key key,
-      @required this.name,
-      @required this.imageUrl,
-      @required this.rating,
-      @required this.numberOfRating,
-      @required this.price,
-      @required this.slug})
-      : super(key: key);
+  PopularFoodTiles({
+    Key key,
+    @required this.name,
+    @required this.imageUrl,
+    @required this.rating,
+    @required this.numberOfRating,
+    @required this.price,
+    @required this.IsVeg,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +93,8 @@ class PopularFoodTiles extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Center(
-                                child: Image.asset(
-                              'assets/images/' + imageUrl + ".png",
+                                child: Image.network(
+                              imageUrl,
                               width: 130,
                               height: 140,
                             )),
@@ -126,10 +129,15 @@ class PopularFoodTiles extends StatelessWidget {
                                       offset: Offset(0.0, 0.75),
                                     ),
                                   ]),
-                              child: Icon(
-                                Icons.assignment_rounded,
-                                color: Color(0xFFfb3132),
-                                size: 16,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.add,
+                                    color: Colors.black,
+                                    size: 26,
+                                  ),
+                                  onPressed: () {},
+                                ),
                               ),
                             ),
                           ),
@@ -196,14 +204,14 @@ class PopularFoodTiles extends StatelessWidget {
                           Container(
                             alignment: Alignment.bottomLeft,
                             padding: EdgeInsets.only(left: 5, top: 5, right: 5),
-                            child: Text('\$' + price,
+                            child: Text('Rs ' + price,
                                 style: TextStyle(
                                     color: Color(0xFF6e6e71),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600)),
                           )
                         ],
-                      )
+                      ),
                     ],
                   ),
                 )),
@@ -243,64 +251,19 @@ class PopularFoodTitle extends StatelessWidget {
 class PopularFoodItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    PopularService cats = Provider.of<PopularService>(context, listen: false);
+    List<PopularCategory> popularfood = cats.getCategories();
+    return ListView.builder(
+      itemCount: popularfood.length,
       scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        PopularFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: '200',
-            price: '150.06',
-            slug: "fried_egg"),
-        PopularFoodTiles(
-            name: "Mixed Vegetable",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "100",
-            price: '105.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Salad With Chicken",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "50",
-            price: '1050.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Mixed Salad",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "100",
-            price: '1578.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Red meat,Salad",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "150",
-            price: '1592.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Mixed Salad",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "100",
-            price: '1519.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Potato,Meat fry",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "70",
-            price: '1235.06',
-            slug: ""),
-        PopularFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: '200',
-            price: '1152.06',
-            slug: "fried_egg"),
-        PopularFoodTiles(
-            name: "Red meat,Salad",
-            imageUrl: "ic_popular_food_2",
-            numberOfRating: "150",
-            price: '1152.06',
-            slug: ""),
-      ],
+      itemBuilder: (context, index) {
+        return PopularFoodTiles(
+            name: popularfood[index].name,
+            imageUrl: popularfood[index].imgPath,
+            numberOfRating: popularfood[index].rating,
+            price: popularfood[index].price,
+            IsVeg: popularfood[index].isVeg);
+      },
     );
   }
 }

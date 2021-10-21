@@ -1,61 +1,69 @@
-import 'package:Delightss/Models/users.dart';
 import 'package:Delightss/Pages/Cart.dart';
 import 'package:Delightss/Pages/MyOrder.dart';
 import 'package:Delightss/Pages/Setting.dart';
-import 'package:Delightss/Services/Details.dart';
-import 'package:Delightss/Services/Login.dart';
-import 'package:Delightss/Widgets/BestFoodWidget.dart';
-import 'package:Delightss/Widgets/BottomNavBarWidget.dart';
-import 'package:Delightss/Widgets/Drawer.dart';
-import 'package:Delightss/Widgets/PopularFoodsWidget.dart';
-import 'package:Delightss/Widgets/SearchWidget.dart';
-import 'package:Delightss/Widgets/Slider.dart';
-import 'package:Delightss/Widgets/TopMenus.dart';
-import 'package:Delightss/Widgets/appBar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'homepage.dart';
 
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-List<UserModel> model;
-
 class _HomePageState extends State<HomePage> {
   final List<Widget> list = [
-    HomePage(),
+    homePage(),
     OrderPage(),
     CartPage(),
     SettingPage()
   ];
-  @override
-  void initState() {
-    super.initState();
-    DetailService cat2Service = DetailService();
-    cat2Service.getCategoriesCollectionFromFirebase();
-    model = cat2Service.getCategories();
+
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    LoginService loginService =
-        Provider.of<LoginService>(context, listen: false);
     return Scaffold(
-      drawer: Drawer(child: SideBar()),
-      appBar: MainAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SearchWidget(),
-            ImageCarousel(),
-            TopMenus(),
-            PopularFoodsWidget(),
-            BestFoodWidget(),
+        body: list[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.deepOrange,
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text(
+                'Home',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.offline_pin_rounded),
+              title: Text(
+                'Order',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.card_giftcard),
+              title: Text(
+                'Cart',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.supervised_user_circle),
+              title: Text(
+                'Account',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavBarWidget(),
-    );
+          currentIndex: _selectedIndex,
+          selectedItemColor: Color(0xFF2c2b2b),
+          onTap: _onItemTapped,
+        ));
   }
 }

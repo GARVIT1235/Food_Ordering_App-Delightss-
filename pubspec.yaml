@@ -26,6 +26,7 @@ dependencies:
   fluttertoast:
   path_provider:
   carousel_slider:
+  http:
 
 dev_dependencies:
   flutter_test:

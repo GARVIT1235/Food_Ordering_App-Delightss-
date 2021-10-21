@@ -1,5 +1,4 @@
 import 'package:Delightss/Models/regUser.dart';
-import 'package:Delightss/Models/users.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

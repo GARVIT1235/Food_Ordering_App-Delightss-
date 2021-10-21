@@ -1,4 +1,7 @@
+import 'package:Delightss/Models/best.dart';
+import 'package:Delightss/Services/BestFood.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BestFoodWidget extends StatefulWidget {
   @override
@@ -50,7 +53,7 @@ class BestFoodTiles extends StatelessWidget {
   String rating;
   String numberOfRating;
   String price;
-  String slug;
+  String IsVeg;
 
   BestFoodTiles(
       {Key key,
@@ -59,126 +62,115 @@ class BestFoodTiles extends StatelessWidget {
       @required this.rating,
       @required this.numberOfRating,
       @required this.price,
-      @required this.slug})
+      @required this.IsVeg})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(left: 10, right: 5, top: 5, bottom: 5),
-            decoration: BoxDecoration(boxShadow: [
-              /* BoxShadow(
-                color: Color(0xFFfae3e2),
-                blurRadius: 15.0,
-                offset: Offset(0, 0.75),
-              ),*/
-            ]),
-            child: Card(
-              semanticContainer: true,
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Image.asset(
-                'assets/images/' + imageUrl + ".jpeg",
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              elevation: 1,
-              margin: EdgeInsets.all(5),
-            ),
+    return Container(
+        padding: EdgeInsets.only(left: 10, right: 5, top: 5, bottom: 5),
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Color(0xFFfae3e2),
+            blurRadius: 15.0,
+            offset: Offset(0, 0.75),
           ),
-        ],
-      ),
-    );
+        ]),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 0,
+                child: Container(
+                  color: Colors.transparent,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(name),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                            child: Text('Rs ' + price,
+                                style: TextStyle(
+                                    color: Color(0xFF6e6e71),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600)),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("Add Item :   "),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.add))
+                        ],
+                      ),
+                    ],
+                  ),
+                ))
+          ],
+        ));
+    // return InkWell(
+    //   onTap: () {},
+    //   child: Column(
+    //     children: <Widget>[
+    //       Container(
+    //         padding: EdgeInsets.only(left: 10, right: 5, top: 5, bottom: 5),
+    //         decoration: BoxDecoration(boxShadow: [
+    //           /* BoxShadow(
+    //             color: Color(0xFFfae3e2),
+    //             blurRadius: 15.0,
+    //             offset: Offset(0, 0.75),
+    //           ),*/
+    //         ]),
+    //         child: Card(
+    //           semanticContainer: true,
+    //           clipBehavior: Clip.antiAliasWithSaveLayer,
+    //           child: Image.asset(
+    //             'assets/images/' + imageUrl + ".jpeg",
+    //           ),
+    //           shape: RoundedRectangleBorder(
+    //             borderRadius: BorderRadius.circular(10.0),
+    //           ),
+    //           elevation: 1,
+    //           margin: EdgeInsets.all(5),
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
 
 class BestFoodList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        BestFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_best_food_8",
-            rating: '4.9',
-            numberOfRating: '200',
-            price: '150.06',
-            slug: "fried_egg"),
-        BestFoodTiles(
-            name: "Mixed vegetable",
-            imageUrl: "ic_best_food_8",
-            rating: "4.9",
-            numberOfRating: "100",
-            price: "170.03",
-            slug: ""),
-        BestFoodTiles(
-            name: "Salad with chicken meat",
-            imageUrl: "ic_best_food_8",
-            rating: "4.0",
-            numberOfRating: "50",
-            price: "110.00",
-            slug: ""),
-        BestFoodTiles(
-            name: "New mixed salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.00",
-            numberOfRating: "100",
-            price: "110.10",
-            slug: ""),
-        BestFoodTiles(
-            name: "Red meat with salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "120.00",
-            slug: ""),
-        BestFoodTiles(
-            name: "New mixed salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.00",
-            numberOfRating: "100",
-            price: "110.10",
-            slug: ""),
-        BestFoodTiles(
-            name: "Potato with meat fry",
-            imageUrl: "ic_best_food_8",
-            rating: "4.2",
-            numberOfRating: "70",
-            price: "230.0",
-            slug: ""),
-        BestFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_best_food_8",
-            rating: '4.9',
-            numberOfRating: '200',
-            price: '150.06',
-            slug: "fried_egg"),
-        BestFoodTiles(
-            name: "Red meat with salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "120.00",
-            slug: ""),
-        BestFoodTiles(
-            name: "Red meat with salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "120.00",
-            slug: ""),
-        BestFoodTiles(
-            name: "Red meat with salad",
-            imageUrl: "ic_best_food_8",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "120.00",
-            slug: ""),
-      ],
+    BestService cats = Provider.of<BestService>(context, listen: false);
+    List<BestCategory> bestfood = cats.getCategories();
+    return ListView.builder(
+      itemCount: bestfood.length,
+      itemBuilder: (context, index) {
+        return BestFoodTiles(
+            name: bestfood[index].name,
+            imageUrl: bestfood[index].imgPath,
+            numberOfRating: bestfood[index].rating,
+            price: bestfood[index].price,
+            IsVeg: bestfood[index].isVeg);
+      },
     );
   }
 }

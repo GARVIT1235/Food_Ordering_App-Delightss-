@@ -23,6 +23,7 @@ class LoginService extends ChangeNotifier {
         .doc(loggedInUserModel.uid)
         .set({"Details": (map['details'] = 'Yes')});
   }
+  
 
   DirFile file = DirFile();
 
