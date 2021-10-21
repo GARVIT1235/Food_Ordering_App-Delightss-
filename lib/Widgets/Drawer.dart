@@ -28,15 +28,21 @@ class SideBar extends StatelessWidget {
                             ? Container(
                                 margin: EdgeInsets.only(right: 10),
                                 padding: EdgeInsets.all(10),
-                                height: 50,
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
                                 child: Image.network(
                                   imgPath,
                                   fit: BoxFit.cover,
                                 ))
-                            : IconButton(
-                                icon: Icon(Icons.block),
-                                onPressed: () {},
-                              )),
+                            : Container(
+                                margin: EdgeInsets.only(right: 10),
+                                padding: EdgeInsets.all(10),
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
+                                child: IconButton(
+                                  icon: Icon(Icons.login_rounded),
+                                  onPressed: () {},
+                                ))),
                     Divider(),
                     SizedBox(height: 10),
                     Visibility(

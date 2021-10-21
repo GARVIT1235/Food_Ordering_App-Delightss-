@@ -10,14 +10,13 @@ class DetailService {
     return _categories;
   }
 
-  LoginService loginService = LoginService();
-
   Future<void> getCategoriesCollectionFromFirebase() async {
+    LoginService loginService = LoginService();
+    String docx = loginService.loggedInUserModel.uid;
     _instance = FirebaseFirestore.instance;
     CollectionReference categories = _instance.collection('users');
 
-    DocumentSnapshot snapshot =
-        await categories.doc(loginService.loggedInUserModel.uid).get();
+    DocumentSnapshot snapshot = await categories.doc(docx).get();
     if (snapshot.exists) {
       Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       var categoriesData = data['userDetails'] as List<dynamic>;

@@ -25,6 +25,7 @@ class UserModel {
         name: json['name'],
         dob: json['dob'],
         gender: json['gender'],
-        phone: json['phone']);
+        phone: json['phone'],
+        age: json['age']);
   }
 }
