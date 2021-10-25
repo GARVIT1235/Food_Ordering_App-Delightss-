@@ -33,10 +33,7 @@ class MainAppBarState extends State<MainAppBar> {
                 margin: EdgeInsets.only(right: 10),
                 padding: EdgeInsets.all(10),
                 child: ClipOval(child: Image.network(imgPath)))
-            : IconButton(
-                icon: Icon(Icons.block),
-                onPressed: () {},
-              )
+            : Container()
       ],
       flexibleSpace: SearchWidget(),
     );

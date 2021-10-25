@@ -22,27 +22,22 @@ class SideBar extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Visibility(
-                        visible: true,
-                        child: loginService.isUserLoggedIn()
-                            ? Container(
-                                margin: EdgeInsets.only(right: 10),
-                                padding: EdgeInsets.all(10),
-                                height: 120,
-                                width: MediaQuery.of(context).size.width,
-                                child: Image.network(
-                                  imgPath,
-                                  fit: BoxFit.cover,
-                                ))
-                            : Container(
-                                margin: EdgeInsets.only(right: 10),
-                                padding: EdgeInsets.all(10),
-                                height: 120,
-                                width: MediaQuery.of(context).size.width,
-                                child: IconButton(
-                                  icon: Icon(Icons.login_rounded),
-                                  onPressed: () {},
-                                ))),
+                    Container(
+                      color: Colors.orange,
+                      child: Visibility(
+                          visible: true,
+                          child: loginService.isUserLoggedIn()
+                              ? Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  padding: EdgeInsets.all(10),
+                                  height: 120,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Image.network(
+                                    imgPath,
+                                    fit: BoxFit.cover,
+                                  ))
+                              : Container()),
+                    ),
                     Divider(),
                     SizedBox(height: 10),
                     Visibility(
@@ -133,7 +128,7 @@ class SideBar extends StatelessWidget {
                                 await loginService.signInWithGoogle();
                             if (success) {
                               Navigator.of(context)
-                                  .pushReplacementNamed('/home');
+                                  .pushReplacementNamed('/detail');
                             }
                           }
                         },

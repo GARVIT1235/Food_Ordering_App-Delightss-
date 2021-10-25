@@ -1,6 +1,7 @@
 import 'package:Delightss/Pages/Cart.dart';
 import 'package:Delightss/Pages/Details.dart';
 import 'package:Delightss/Pages/Home.dart';
+import 'package:Delightss/Pages/LandingError.dart';
 import 'package:Delightss/Pages/Login.dart';
 import 'package:Delightss/Pages/Setting.dart';
 import 'package:Delightss/Services/BestFood.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           '/order': (BuildContext context) => OrderPage(),
           '/setting': (BuildContext context) => SettingPage(),
           '/cart': (BuildContext context) => CartPage(),
+          '/lerror': (BuildContext context) => LandingErrorPage(),
         });
   }
 }

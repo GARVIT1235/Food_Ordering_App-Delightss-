@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:Delightss/Services/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -7,7 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 class DetailPage extends StatefulWidget {
   @override
@@ -32,7 +30,9 @@ class _DetailPageState extends State<DetailPage> {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      Fluttertoast.showToast(msg: 'Please enable Your Location Service');
+      Fluttertoast.showToast(
+          msg: 'Please enable Your Location Service',
+          toastLength: Toast.LENGTH_SHORT);
     }
 
     permission = await Geolocator.checkPermission();
@@ -73,7 +73,7 @@ class _DetailPageState extends State<DetailPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Colors.deepOrangeAccent,
           title: Text(
             'User Detail',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
@@ -82,13 +82,6 @@ class _DetailPageState extends State<DetailPage> {
           centerTitle: true,
         ),
         body: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment(
-                0.8, 0.0), // 10% of the width, so there are ten blinds.
-            colors: <Color>[Colors.deepOrange, Colors.deepOrangeAccent],
-          )),
           padding: EdgeInsets.all(15),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -119,6 +112,7 @@ class _DetailPageState extends State<DetailPage> {
                               },
                               decoration: InputDecoration(
                                 hintText: 'First Name',
+                                prefixIcon: Icon(Icons.people_outline),
                                 border: InputBorder.none,
                                 fillColor: Colors.grey[300],
                                 filled: true,
@@ -143,6 +137,7 @@ class _DetailPageState extends State<DetailPage> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.people_outline),
                                 hintText: 'Last Name',
                                 border: InputBorder.none,
                                 fillColor: Colors.grey[300],
@@ -171,6 +166,7 @@ class _DetailPageState extends State<DetailPage> {
                           return null;
                         },
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.calendar_today),
                           hintText: 'Date of Birth : DD/MM/YYYY',
                           border: InputBorder.none,
                           fillColor: Colors.grey[300],
@@ -199,6 +195,7 @@ class _DetailPageState extends State<DetailPage> {
                                 return null;
                               },
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.people_sharp),
                                 hintText: 'Age',
                                 border: InputBorder.none,
                                 fillColor: Colors.grey[300],
@@ -261,6 +258,7 @@ class _DetailPageState extends State<DetailPage> {
                           return null;
                         },
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.phone_android),
                           hintText: 'Phone No. 9345789756',
                           border: InputBorder.none,
                           fillColor: Colors.grey[300],
@@ -324,7 +322,7 @@ class _DetailPageState extends State<DetailPage> {
                                 child: Text(
                                   currentAddress,
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.deepOrangeAccent,
                                       fontWeight: FontWeight.bold),
                                 )),
                             SizedBox(
@@ -339,7 +337,7 @@ class _DetailPageState extends State<DetailPage> {
                                   child: Text(
                                     'Locate me',
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.deepOrangeAccent,
                                         fontWeight: FontWeight.bold),
                                   )),
                             ),
@@ -366,7 +364,7 @@ class _DetailPageState extends State<DetailPage> {
                               color: Colors.deepOrange,
                               borderRadius: BorderRadius.circular(50),
                               border:
-                                  Border.all(color: Colors.white, width: 2)),
+                                  Border.all(color: Colors.white70, width: 2)),
                           child: Text("Submit",
                               style: TextStyle(
                                   fontSize: 16,
@@ -418,7 +416,7 @@ class _DetailPageState extends State<DetailPage> {
       //       }
       //     }));
       // print(response.body);
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/lerror');
     }
   }
 }

@@ -119,16 +119,6 @@ class PopularFoodTiles extends StatelessWidget {
                             child: Container(
                               height: 28,
                               width: 28,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white70,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xFFfae3e2),
-                                      blurRadius: 25.0,
-                                      offset: Offset(0.0, 0.75),
-                                    ),
-                                  ]),
                               child: Center(
                                 child: IconButton(
                                   icon: Icon(
