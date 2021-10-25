@@ -21,7 +21,7 @@ class _CartPageState extends State<CartPage> {
       drawer: Drawer(child: SideBar()),
       appBar: AppBar(
         title: Text(
-          'Chart',
+          'Cart',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
