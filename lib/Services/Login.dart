@@ -10,7 +10,7 @@ Map<String, String> map = Map();
 class LoginService extends ChangeNotifier {
   LoginUserModel _userModel;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  addUserToFirestore(Map usersModel) {
+  addUserToFirestore(List usersModel) {
     firebaseFirestore
         .collection("users")
         .doc(loggedInUserModel.uid)

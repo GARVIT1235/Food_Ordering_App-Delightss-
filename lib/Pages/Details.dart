@@ -384,6 +384,7 @@ class _DetailPageState extends State<DetailPage> {
         Provider.of<LoginService>(context, listen: false);
     if (_formKey.currentState.validate()) {
       Map<String, String> map = Map();
+      List<Map> list;
       map["name"] = firstName.text.trim() + " " + lastName.text.trim();
       map["address"] = currentAddress;
       map["age"] = age.text;
@@ -392,7 +393,8 @@ class _DetailPageState extends State<DetailPage> {
       map["lat"] = currentposition.latitude.toString();
       map["lon"] = currentposition.longitude.toString();
       map["phone"] = phone.text;
-      loginService.addUserToFirestore(map);
+      list = [map];
+      loginService.addUserToFirestore(list);
       loginService.registerToFirestore();
 
       // final String name = loginService.loggedInUserModel.displayName;

@@ -1,6 +1,8 @@
+import 'package:Delightss/Models/Popular.dart';
+import 'package:Delightss/Models/cartmodel.dart';
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Widgets/Drawer.dart';
-import 'package:Delightss/Widgets/appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
+    CartService cartService = Provider.of<CartService>(context, listen: false);
     LoginService loginService =
         Provider.of<LoginService>(context, listen: false);
     String imgPath = loginService.loggedInUserModel != null
@@ -34,7 +37,192 @@ class _CartPageState extends State<CartPage> {
               : Container()
         ],
       ),
-      body: Center(),
+      body: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.shopping_cart,
+                  color: Colors.deepOrange,
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Text('Ordering List',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold)),
+                ),
+                Consumer<CartService>(builder: (context, cart, child) {
+                  if (cart.items.length > 0) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Material(
+                        child: InkWell(
+                          onTap: () {
+                            cartService.removeAll(context);
+                          },
+                          child: Container(
+                              padding: EdgeInsets.only(
+                                  top: 3, bottom: 3, left: 15, right: 15),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.delete,
+                                      size: 20, color: Colors.deepOrangeAccent),
+                                  SizedBox(width: 5),
+                                  Text('Delete All',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12)),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.deepOrangeAccent
+                                      .withOpacity(0.2))),
+                        ),
+                      ),
+                    );
+                  }
+
+                  // return empty container
+                  return Container();
+                })
+              ],
+            ),
+            Expanded(child: Consumer<CartService>(
+              builder: (context, cart, child) {
+                List<Widget> cartItems = [];
+                double mainTotal = 0;
+
+                if (cart.items.length > 0) {
+                  mainTotal = cart.getShoppingCartTotalPrice();
+
+                  cart.items.forEach((CartItem item) {
+                    PopularCategory itemSubCategory = item.category;
+                    double total = itemSubCategory.price as double;
+
+                    cartItems.add(Container(
+                        margin: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 10,
+                                  offset: Offset.zero)
+                            ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ClipOval(
+                              child: Image.network(itemSubCategory.imgPath,
+                                  width: 50, height: 50, fit: BoxFit.cover),
+                            ),
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(itemSubCategory.name,
+                                      style:
+                                          TextStyle(color: Colors.deepOrange)),
+                                  Text('Rs ${itemSubCategory.price.toString()}',
+                                      style: TextStyle(color: Colors.grey)),
+                                  Text('\$${total.toStringAsFixed(2)}',
+                                      style: TextStyle(
+                                          color: Colors.deepOrangeAccent,
+                                          fontWeight: FontWeight.bold))
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  cart.remove(context, item);
+                                },
+                                icon: Icon(Icons.highlight_off,
+                                    size: 30, color: Colors.deepOrange))
+                          ],
+                        )));
+                  });
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(height: 20),
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: SingleChildScrollView(
+                            child: Column(children: cartItems),
+                          ),
+                        ),
+                      ),
+                      Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text.rich(TextSpan(children: [
+                                TextSpan(
+                                    text:
+                                        'Total: RS ${mainTotal.toStringAsFixed(2)}',
+                                    style: TextStyle(
+                                        color: Colors.deepOrange,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25))
+                              ]))
+                            ],
+                          ))
+                    ],
+                  );
+                } else {
+                  return Container(
+                    alignment: Alignment.center,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 20, right: 20),
+                            width: 2,
+                            height: 50,
+                            color: Colors.grey[400],
+                          ),
+                          Text('Add Item in Ordering List',
+                              style: TextStyle(color: Colors.grey[400]))
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              },
+            )),
+            Container(
+              width: 100,
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.offline_pin_rounded),
+                    Text("Place Order")
+                  ],
+                ),
+              ),
+            ),
+          ])),
     );
   }
 }

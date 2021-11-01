@@ -22,22 +22,19 @@ class SideBar extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Container(
-                      color: Colors.orange,
-                      child: Visibility(
-                          visible: true,
-                          child: loginService.isUserLoggedIn()
-                              ? Container(
-                                  margin: EdgeInsets.only(right: 10),
-                                  padding: EdgeInsets.all(10),
-                                  height: 120,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Image.network(
-                                    imgPath,
-                                    fit: BoxFit.cover,
-                                  ))
-                              : Container()),
-                    ),
+                    Visibility(
+                        visible: true,
+                        child: loginService.isUserLoggedIn()
+                            ? Container(
+                                margin: EdgeInsets.only(right: 10),
+                                padding: EdgeInsets.all(10),
+                                height: 120,
+                                width: MediaQuery.of(context).size.width,
+                                child: Image.network(
+                                  imgPath,
+                                  fit: BoxFit.cover,
+                                ))
+                            : Container()),
                     Divider(),
                     SizedBox(height: 10),
                     Visibility(
@@ -110,7 +107,7 @@ class SideBar extends StatelessWidget {
                                 Icon(Icons.supervised_user_circle,
                                     color: Colors.white, size: 20),
                                 SizedBox(width: 10),
-                                Text('Setting ',
+                                Text('Account ',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20))
                               ],
@@ -121,8 +118,8 @@ class SideBar extends StatelessWidget {
                         onPressed: () async {
                           if (userLoggedIn) {
                             await loginService.signOut();
-                            Navigator.of(context)
-                                .pushReplacementNamed('/login');
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/login', (Route<dynamic> route) => false);
                           } else {
                             bool success =
                                 await loginService.signInWithGoogle();

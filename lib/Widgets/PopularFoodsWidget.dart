@@ -1,5 +1,6 @@
 import 'package:Delightss/Models/Popular.dart';
 import 'package:Delightss/Services/PopularFood.dart';
+import 'package:Delightss/Widgets/unititem.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,7 @@ class _PopularFoodsWidgetState extends State<PopularFoodsWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 265,
+      height: 320,
       width: double.infinity,
       child: Column(
         children: <Widget>[
@@ -133,6 +134,7 @@ class PopularFoodTiles extends StatelessWidget {
                           ),
                         ],
                       ),
+                      UnitPriceWidget(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
