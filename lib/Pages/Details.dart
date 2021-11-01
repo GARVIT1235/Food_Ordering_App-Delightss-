@@ -1,4 +1,5 @@
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Services/email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
@@ -396,7 +397,8 @@ class _DetailPageState extends State<DetailPage> {
       list = [map];
       loginService.addUserToFirestore(list);
       loginService.registerToFirestore();
-
+      Email email = Email();
+      email.sendMail(loginService.loggedInUserModel.email, map['name']);
       // final String name = loginService.loggedInUserModel.displayName;
       // final String email = loginService.loggedInUserModel.email;
       // print(name + " " + email);
