@@ -1,14 +1,13 @@
 import 'package:Delightss/Models/Login.dart';
-import 'package:Delightss/Services/File.dart';
+//import 'package:Delightss/Services/File.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-Map<String, String> map = Map();
-
 class LoginService extends ChangeNotifier {
   LoginUserModel _userModel;
+
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   addUserToFirestore(List usersModel) {
     firebaseFirestore
@@ -21,11 +20,10 @@ class LoginService extends ChangeNotifier {
     firebaseFirestore
         .collection("userRegister")
         .doc(loggedInUserModel.uid)
-        .set({"Details": (map['details'] = 'Yes')});
+        .set({"Details": "Yes"});
   }
-  
 
-  DirFile file = DirFile();
+  //DirFile file = DirFile();
 
   LoginUserModel get loggedInUserModel => _userModel;
 
@@ -56,12 +54,12 @@ class LoginService extends ChangeNotifier {
           email: userCreds.user.email);
     }
     notifyListeners();
-    file.createFile('1');
+//    file.createFile('1');
     return true;
   }
 
   Future<void> signOut() async {
-    file.createFile('0');
+    //  file.createFile('0');
     await GoogleSignIn().signOut();
     _userModel = null;
   }
