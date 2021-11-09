@@ -219,7 +219,6 @@ class _CartPageState extends State<CartPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Icon(Icons.offline_pin_rounded),
-                    Text("Place Order")
                   ],
                 ),
               ),

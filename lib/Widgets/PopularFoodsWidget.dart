@@ -1,5 +1,6 @@
 import 'package:Delightss/Models/Popular.dart';
 import 'package:Delightss/Services/PopularFood.dart';
+import 'package:Delightss/Services/catcartService.dart';
 import 'package:Delightss/Widgets/unititem.dart';
 import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,8 @@ class PopularFoodTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CategorySelectionService catSelection =
+        Provider.of<CategorySelectionService>(context);
     return Column(
       children: <Widget>[
         Container(
@@ -65,9 +68,9 @@ class PopularFoodTiles extends StatelessWidget {
                 width: 170,
                 height: 300,
                 child: Column(
-                  children: <Widget>[
+                  children: [
                     Stack(
-                      children: <Widget>[
+                      children: [
                         Align(
                           alignment: Alignment.topRight,
                           child: Container(
@@ -104,7 +107,7 @@ class PopularFoodTiles extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
+                      children: [
                         Container(
                           alignment: Alignment.bottomLeft,
                           padding: EdgeInsets.only(left: 5, top: 5),
@@ -127,7 +130,9 @@ class PopularFoodTiles extends StatelessWidget {
                                   color: Colors.black,
                                   size: 26,
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  catSelection.selectedCategory;
+                                },
                               ),
                             ),
                           ),

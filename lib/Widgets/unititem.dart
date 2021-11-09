@@ -13,17 +13,14 @@ class UnitPriceWidget extends StatefulWidget {
 
 class _UnitPriceWidgetState extends State<UnitPriceWidget> {
   Color themeColor;
-
   int amount = 0;
-
   double price = 0.0;
-
   double cost = 0.0;
 
   @override
   Widget build(BuildContext context) {
     CategorySelectionService catSelection =
-        Provider.of<CategorySelectionService>(context);
+        Provider.of<CategorySelectionService>(context,listen: true);
 
     return Column(children: [
       Padding(

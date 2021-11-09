@@ -13,6 +13,7 @@ class CategorySelectionService extends ChangeNotifier {
   PopularCategory get selectedCategory => _selectedCategory;
   set selectedCategory(PopularCategory value) {
     _selectedCategory = value;
+    print(_selectedCategory);
     notifyListeners();
   }
 
@@ -32,7 +33,11 @@ class CategorySelectionService extends ChangeNotifier {
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(1)
         });
+      } else {
+        amount++;
       }
+    } else {
+      amount++;
     }
   }
 
@@ -52,15 +57,21 @@ class CategorySelectionService extends ChangeNotifier {
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(-1)
         });
+      } else {
+        amount--;
       }
+    } else {
+      amount--;
     }
   }
 
   int get subCategoryAmount {
     int subCatAmount = 0;
-    if (_selectedCategory != null) {
-      subCatAmount = amount;
-    }
+    subCatAmount = amount;
+    // if (_selectedCategory != null) {
+    //   subCatAmount = amount;
+    // }
     return subCatAmount;
+    notifyListeners();
   }
 }
