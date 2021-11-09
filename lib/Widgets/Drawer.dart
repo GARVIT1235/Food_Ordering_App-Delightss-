@@ -1,4 +1,5 @@
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class SideBar extends StatelessWidget {
         : '';
     return Scaffold(
         body: Container(
-            color: Colors.deepOrangeAccent,
+            color: AppColors.secondary_color,
             padding: EdgeInsets.all(40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -46,7 +47,7 @@ class SideBar extends StatelessWidget {
                                 SizedBox(width: 20),
                                 Text('Welcome ',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20))
+                                        color: AppColors.white, fontSize: 20))
                               ],
                             ))),
                     Visibility(
@@ -57,11 +58,12 @@ class SideBar extends StatelessWidget {
                             },
                             child: Row(
                               children: [
-                                Icon(Icons.home, color: Colors.white, size: 20),
+                                Icon(Icons.home,
+                                    color: AppColors.white, size: 20),
                                 SizedBox(width: 10),
                                 Text('Home',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20))
+                                        color: AppColors.white, fontSize: 20))
                               ],
                             ))),
                     Visibility(
@@ -73,11 +75,11 @@ class SideBar extends StatelessWidget {
                             child: Row(
                               children: [
                                 Icon(Icons.offline_pin_rounded,
-                                    color: Colors.white, size: 20),
+                                    color: AppColors.white, size: 20),
                                 SizedBox(width: 10),
                                 Text('Order ',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20))
+                                        color: AppColors.white, fontSize: 20))
                               ],
                             ))),
                     Visibility(
@@ -89,11 +91,11 @@ class SideBar extends StatelessWidget {
                             child: Row(
                               children: [
                                 Icon(Icons.card_giftcard,
-                                    color: Colors.white, size: 20),
+                                    color: AppColors.white, size: 20),
                                 SizedBox(width: 10),
                                 Text('Cart ',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20))
+                                        color: AppColors.white, fontSize: 20))
                               ],
                             ))),
                     Visibility(
@@ -105,11 +107,11 @@ class SideBar extends StatelessWidget {
                             child: Row(
                               children: [
                                 Icon(Icons.supervised_user_circle,
-                                    color: Colors.white, size: 20),
+                                    color: AppColors.white, size: 20),
                                 SizedBox(width: 10),
                                 Text('Account ',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20))
+                                        color: AppColors.white, fontSize: 20))
                               ],
                             ))),
                     Divider(),
@@ -132,11 +134,11 @@ class SideBar extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(userLoggedIn ? Icons.logout : Icons.login,
-                                color: Colors.white, size: 20),
+                                color: AppColors.white, size: 20),
                             SizedBox(width: 10),
                             Text(userLoggedIn ? 'Sign Out ' : 'Login ',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20))
+                                    color: AppColors.white, fontSize: 20))
                           ],
                         )),
                   ],

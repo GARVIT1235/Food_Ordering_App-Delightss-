@@ -1,6 +1,7 @@
 import 'package:Delightss/Models/Popular.dart';
 import 'package:Delightss/Services/PopularFood.dart';
 import 'package:Delightss/Widgets/unititem.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +54,7 @@ class PopularFoodTiles extends StatelessWidget {
           padding: EdgeInsets.only(left: 10, right: 5, top: 5, bottom: 5),
           decoration: BoxDecoration(boxShadow: []),
           child: Card(
-              color: Colors.white,
+              color: AppColors.white,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: const BorderRadius.all(

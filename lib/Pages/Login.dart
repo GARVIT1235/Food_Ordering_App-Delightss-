@@ -1,4 +1,5 @@
 import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
     LoginService loginService =
         Provider.of<LoginService>(context, listen: false);
     return Scaffold(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: AppColors.main_color,
         body: Container(
             child: Stack(
           children: [
@@ -40,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                           width: 180,
                           height: 180,
                           alignment: Alignment.center,
-                          color: Colors.white,
+                          color: AppColors.white,
                           child: Hero(
                               tag: 'assets/images/logo.jpg',
                               child: Image(
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text('WELCOME',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.white,
                           fontSize: Y * 0.05,
                           fontWeight: FontWeight.bold)),
                   SizedBox(height: Y * 0.04),
@@ -77,14 +78,14 @@ class _LoginPageState extends State<LoginPage> {
                               alignment: Alignment.center,
                               padding: EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                  color: Colors.deepOrange,
+                                  color: AppColors.main_color,
                                   borderRadius: BorderRadius.circular(50),
                                   border: Border.all(
-                                      color: Colors.white, width: 2)),
+                                      color: AppColors.white, width: 2)),
                               child: Text("Sign In",
                                   style: TextStyle(
                                       fontSize: 16,
-                                      color: Colors.white,
+                                      color: AppColors.white,
                                       fontWeight: FontWeight.bold))),
                         ),
                       )),
@@ -101,14 +102,14 @@ class _LoginPageState extends State<LoginPage> {
                               alignment: Alignment.center,
                               padding: EdgeInsets.all(15),
                               decoration: BoxDecoration(
-                                  color: Colors.deepOrange,
+                                  color: AppColors.main_color,
                                   borderRadius: BorderRadius.circular(50),
                                   border: Border.all(
-                                      color: Colors.white, width: 2)),
+                                      color: AppColors.white, width: 2)),
                               child: Text("Guest",
                                   style: TextStyle(
                                       fontSize: 16,
-                                      color: Colors.white,
+                                      color: AppColors.white,
                                       fontWeight: FontWeight.bold))),
                         ),
                       )),

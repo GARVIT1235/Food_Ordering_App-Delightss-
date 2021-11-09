@@ -10,6 +10,7 @@ import 'package:Delightss/Services/PopularFood.dart';
 import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Services/catcartService.dart';
 import 'package:Delightss/Services/slider.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         theme: ThemeData(
             brightness: Brightness.light,
-            primarySwatch: Colors.deepOrange,
+            primarySwatch: AppColors.main_color,
             textTheme:
                 TextTheme(bodyText2: GoogleFonts.quicksand(fontSize: 14.0))),
         darkTheme: ThemeData(

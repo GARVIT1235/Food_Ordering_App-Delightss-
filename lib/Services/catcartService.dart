@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 class CategorySelectionService extends ChangeNotifier {
   FirebaseFirestore _instance;
   PopularCategory _selectedCategory;
+  int amount = 0;
 
   PopularCategory get selectedCategory => _selectedCategory;
   set selectedCategory(PopularCategory value) {
@@ -24,20 +25,13 @@ class CategorySelectionService extends ChangeNotifier {
 
       if (cartService.isSubCategoryAddedToCart(_selectedCategory)) {
         _instance = FirebaseFirestore.instance;
+        amount++;
         _instance
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(1)
-        }).then((value) {
-          double p = _selectedCategory.price as double;
-          p++;
-          notifyListeners();
         });
-      } else {
-        double p = _selectedCategory.price as double;
-        p++;
-        notifyListeners();
       }
     }
   }
@@ -51,20 +45,13 @@ class CategorySelectionService extends ChangeNotifier {
 
       if (cartService.isSubCategoryAddedToCart(_selectedCategory)) {
         _instance = FirebaseFirestore.instance;
+        amount--;
         _instance
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(-1)
-        }).then((value) {
-          double p = _selectedCategory.price as double;
-          p--;
-          notifyListeners();
         });
-      } else {
-        double p = _selectedCategory.price as double;
-        p--;
-        notifyListeners();
       }
     }
   }
@@ -72,7 +59,7 @@ class CategorySelectionService extends ChangeNotifier {
   int get subCategoryAmount {
     int subCatAmount = 0;
     if (_selectedCategory != null) {
-      subCatAmount = 0;
+      subCatAmount = amount;
     }
     return subCatAmount;
   }

@@ -1,6 +1,7 @@
 import 'package:Delightss/Services/BestFood.dart';
 import 'package:Delightss/Services/PopularFood.dart';
 import 'package:Delightss/Services/slider.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class SplashPageState extends State<SplashPage> {
     final X = MediaQuery.of(context).size.width;
     final Y = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: AppColors.main_color,
       body: Container(
         padding: EdgeInsets.only(top: Y / 3 + 30),
         height: Y,
@@ -47,7 +48,7 @@ class SplashPageState extends State<SplashPage> {
               TyperAnimatedText('WELCOME',
                   textStyle: TextStyle(
                     fontSize: 20.0,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                   speed: Duration(milliseconds: 200))
             ]),

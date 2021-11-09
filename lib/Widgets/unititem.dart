@@ -1,14 +1,23 @@
 import 'package:Delightss/Services/catcartService.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 const int MAX_VALUE = 20;
 const int MIN_VALUE = 0;
 
-class UnitPriceWidget extends StatelessWidget {
+class UnitPriceWidget extends StatefulWidget {
+  @override
+  State<UnitPriceWidget> createState() => _UnitPriceWidgetState();
+}
+
+class _UnitPriceWidgetState extends State<UnitPriceWidget> {
   Color themeColor;
+
   int amount = 0;
+
   double price = 0.0;
+
   double cost = 0.0;
 
   @override
@@ -21,7 +30,7 @@ class UnitPriceWidget extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: [
                   BoxShadow(
@@ -36,12 +45,13 @@ class UnitPriceWidget extends StatelessWidget {
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount < MAX_VALUE
                       ? () {
+                          print("button");
                           catSelection.incrementSubCategoryAmount(context);
                         }
                       : null,
                   child: Icon(Icons.add_circle_outline,
                       color: catSelection.subCategoryAmount < MAX_VALUE
-                          ? Colors.deepOrange
+                          ? AppColors.main_color
                           : Colors.deepPurple.withOpacity(0.2)),
                 ),
                 Expanded(

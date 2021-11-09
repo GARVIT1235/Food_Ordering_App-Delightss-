@@ -1,5 +1,6 @@
 import 'package:Delightss/Models/best.dart';
 import 'package:Delightss/Services/BestFood.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -75,7 +76,7 @@ class BestFoodTiles extends StatelessWidget {
             padding: EdgeInsets.only(left: 10, right: 5, top: 5, bottom: 5),
             decoration: BoxDecoration(boxShadow: []),
             child: Card(
-                color: Colors.white,
+                color: AppColors.white,
                 elevation: 1,
                 semanticContainer: true,
                 clipBehavior: Clip.antiAliasWithSaveLayer,

@@ -1,5 +1,6 @@
 import 'package:Delightss/Models/slider.dart';
 import 'package:Delightss/Services/slider.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
           .map(
             (imgPath) => Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 image: DecorationImage(
                   fit: BoxFit.contain,
                   image: NetworkImage(imgPath),

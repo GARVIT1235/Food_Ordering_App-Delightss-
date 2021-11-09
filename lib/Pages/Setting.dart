@@ -2,6 +2,7 @@ import 'package:Delightss/Models/users.dart';
 import 'package:Delightss/Services/Details.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Widgets/Drawer.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -120,7 +121,7 @@ class _SettingPageState extends State<SettingPage> {
                           '/login', (Route<dynamic> route) => false);
                     },
                     child: Container(
-                        color: Colors.deepOrange,
+                        color: AppColors.main_color,
                         margin: EdgeInsets.all(20),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
@@ -129,13 +130,13 @@ class _SettingPageState extends State<SettingPage> {
                             children: [
                               Icon(
                                 Icons.logout,
-                                color: Colors.white,
+                                color: AppColors.white,
                               ),
                               SizedBox(width: 10),
                               Text(
                                 "Logout",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: AppColors.white, fontSize: 18),
                               )
                             ],
                           ),
@@ -148,7 +149,7 @@ class _SettingPageState extends State<SettingPage> {
               child: Text(
                 "Login In",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.deepOrange),
+                    fontWeight: FontWeight.bold, color: AppColors.main_color),
               ),
             ),
     );

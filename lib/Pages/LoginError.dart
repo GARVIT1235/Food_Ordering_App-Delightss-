@@ -1,3 +1,4 @@
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginErrorPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class LoginErrorPageState extends State<LoginErrorPage> {
     final X = MediaQuery.of(context).size.width;
     final Y = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: AppColors.main_color,
       body: Container(
         padding: EdgeInsets.only(top: Y / 3 + 30),
         height: Y,

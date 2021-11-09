@@ -1,5 +1,6 @@
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Services/email.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
@@ -74,10 +75,11 @@ class _DetailPageState extends State<DetailPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepOrangeAccent,
+          backgroundColor: AppColors.secondary_color,
           title: Text(
             'User Detail',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+            style:
+                TextStyle(fontWeight: FontWeight.bold, color: AppColors.white),
           ),
           elevation: 0,
           centerTitle: true,
@@ -300,8 +302,8 @@ class _DetailPageState extends State<DetailPage> {
                                     builder: (ctx) => Container(
                                       child: IconButton(
                                         icon: Icon(Icons.location_on),
-                                        hoverColor: Colors.deepOrange,
-                                        color: Colors.deepOrangeAccent,
+                                        hoverColor: AppColors.main_color,
+                                        color: AppColors.secondary_color,
                                         onPressed: () {
                                           _determinePosition();
                                         },
@@ -323,7 +325,7 @@ class _DetailPageState extends State<DetailPage> {
                                 child: Text(
                                   currentAddress,
                                   style: TextStyle(
-                                      color: Colors.deepOrangeAccent,
+                                      color: AppColors.secondary_color,
                                       fontWeight: FontWeight.bold),
                                 )),
                             SizedBox(
@@ -338,7 +340,7 @@ class _DetailPageState extends State<DetailPage> {
                                   child: Text(
                                     'Locate me',
                                     style: TextStyle(
-                                        color: Colors.deepOrangeAccent,
+                                        color: AppColors.secondary_color,
                                         fontWeight: FontWeight.bold),
                                   )),
                             ),
@@ -362,14 +364,14 @@ class _DetailPageState extends State<DetailPage> {
                           alignment: Alignment.center,
                           padding: EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                              color: Colors.deepOrange,
+                              color: AppColors.main_color,
                               borderRadius: BorderRadius.circular(50),
-                              border:
-                                  Border.all(color: Colors.white70, width: 2)),
+                              border: Border.all(
+                                  color: Colors.white70, width: 2)),
                           child: Text("Submit",
                               style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.white,
+                                  color: AppColors.white,
                                   fontWeight: FontWeight.bold))),
                     ),
                   )),

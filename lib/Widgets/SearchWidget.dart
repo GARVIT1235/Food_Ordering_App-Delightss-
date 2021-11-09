@@ -1,3 +1,4 @@
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatelessWidget {
@@ -40,7 +41,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: AppColors.white)),
                   child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -53,7 +54,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: AppColors.white)),
                   child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -66,7 +67,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: AppColors.white)),
                   child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -79,7 +80,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: AppColors.white)),
                   child: TextButton(
                       onPressed: () {},
                       child: Text(
@@ -92,7 +93,7 @@ class SearchWidget extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.white)),
+                      border: Border.all(width: 2, color: AppColors.white)),
                   child: TextButton(
                       onPressed: () {},
                       child: Text(

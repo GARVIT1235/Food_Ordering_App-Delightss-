@@ -1,3 +1,4 @@
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
@@ -17,35 +18,35 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     }
 
     return BottomNavigationBar(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: AppColors.main_color,
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           title: Text(
             'Home',
-            style: TextStyle(color: Colors.deepOrange),
+            style: TextStyle(color: AppColors.main_color),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.offline_pin_rounded),
           title: Text(
             'Order',
-            style: TextStyle(color: Colors.deepOrange),
+            style: TextStyle(color: AppColors.main_color),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.card_giftcard),
           title: Text(
             'Cart',
-            style: TextStyle(color: Colors.deepOrange),
+            style: TextStyle(color: AppColors.main_color),
           ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.supervised_user_circle),
           title: Text(
             'Account',
-            style: TextStyle(color: Colors.deepOrange),
+            style: TextStyle(color: AppColors.main_color),
           ),
         ),
       ],

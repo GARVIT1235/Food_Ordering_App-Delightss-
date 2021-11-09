@@ -3,6 +3,7 @@ import 'package:Delightss/Models/cartmodel.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Widgets/Drawer.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Icon(
                   Icons.shopping_cart,
-                  color: Colors.deepOrange,
+                  color: AppColors.main_color,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -69,16 +70,18 @@ class _CartPageState extends State<CartPage> {
                               child: Row(
                                 children: [
                                   Icon(Icons.delete,
-                                      size: 20, color: Colors.deepOrangeAccent),
+                                      size: 20,
+                                      color: AppColors.secondary_color),
                                   SizedBox(width: 5),
                                   Text('Delete All',
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 12)),
+                                          color: AppColors.white,
+                                          fontSize: 12)),
                                 ],
                               ),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  color: Colors.deepOrangeAccent
+                                  color: AppColors.secondary_color
                                       .withOpacity(0.2))),
                         ),
                       ),
@@ -106,7 +109,7 @@ class _CartPageState extends State<CartPage> {
                         margin: EdgeInsets.all(10),
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColors.white,
                             borderRadius: BorderRadius.circular(50),
                             boxShadow: [
                               BoxShadow(
@@ -127,13 +130,13 @@ class _CartPageState extends State<CartPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(itemSubCategory.name,
-                                      style:
-                                          TextStyle(color: Colors.deepOrange)),
+                                      style: TextStyle(
+                                          color: AppColors.main_color)),
                                   Text('Rs ${itemSubCategory.price.toString()}',
                                       style: TextStyle(color: Colors.grey)),
-                                  Text('\$${total.toStringAsFixed(2)}',
+                                  Text('Rs ${total.toStringAsFixed(2)}',
                                       style: TextStyle(
-                                          color: Colors.deepOrangeAccent,
+                                          color: AppColors.secondary_color,
                                           fontWeight: FontWeight.bold))
                                 ],
                               ),
@@ -143,7 +146,7 @@ class _CartPageState extends State<CartPage> {
                                   cart.remove(context, item);
                                 },
                                 icon: Icon(Icons.highlight_off,
-                                    size: 30, color: Colors.deepOrange))
+                                    size: 30, color: AppColors.main_color))
                           ],
                         )));
                   });
@@ -173,7 +176,7 @@ class _CartPageState extends State<CartPage> {
                                     text:
                                         'Total: RS ${mainTotal.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                        color: Colors.deepOrange,
+                                        color: AppColors.main_color,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25))
                               ]))
@@ -204,7 +207,6 @@ class _CartPageState extends State<CartPage> {
               },
             )),
             Container(
-              width: 100,
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
                 shape: RoundedRectangleBorder(

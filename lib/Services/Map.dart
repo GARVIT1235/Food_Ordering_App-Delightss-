@@ -1,3 +1,4 @@
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -87,8 +88,8 @@ class _MapServiceState extends State<MapService> {
                     builder: (ctx) => Container(
                       child: IconButton(
                         icon: Icon(Icons.location_on),
-                        hoverColor: Colors.deepOrange,
-                        color: Colors.deepOrangeAccent,
+                        hoverColor: AppColors.main_color,
+                        color: AppColors.secondary_color,
                         onPressed: () {
                           _determinePosition();
                         },
@@ -110,7 +111,7 @@ class _MapServiceState extends State<MapService> {
                 child: Text(
                   currentAddress,
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: AppColors.white, fontWeight: FontWeight.bold),
                 )),
             SizedBox(
               width: 8,
@@ -124,7 +125,7 @@ class _MapServiceState extends State<MapService> {
                   child: Text(
                     'Locate me',
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                        color: AppColors.white, fontWeight: FontWeight.bold),
                   )),
             ),
           ],

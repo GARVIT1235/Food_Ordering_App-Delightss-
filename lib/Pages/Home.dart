@@ -1,6 +1,7 @@
 import 'package:Delightss/Pages/Cart.dart';
 import 'package:Delightss/Pages/MyOrder.dart';
 import 'package:Delightss/Pages/Setting.dart';
+import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: list[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: AppColors.main_color,
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
