@@ -20,7 +20,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     return BottomNavigationBar(
       backgroundColor: AppColors.main_color,
       type: BottomNavigationBarType.fixed,
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           title: Text(
@@ -66,6 +66,8 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
         return () => Navigator.of(context).pushNamed('/cart');
       case 4:
         return () => Navigator.of(context).pushNamed('/setting');
+      default:
+        return () => Navigator.of(context).pushNamed('/home');
     }
   }
 }

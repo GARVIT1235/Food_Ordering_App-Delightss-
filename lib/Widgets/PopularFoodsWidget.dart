@@ -1,5 +1,7 @@
 import 'package:Delightss/Models/Popular.dart';
+import 'package:Delightss/Models/cartmodel.dart';
 import 'package:Delightss/Services/PopularFood.dart';
+import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Services/catcartService.dart';
 import 'package:Delightss/Widgets/unititem.dart';
 import 'package:Delightss/style/app_colors.dart';
@@ -49,8 +51,10 @@ class PopularFoodTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartService cartService = Provider.of<CartService>(context, listen: false);
     CategorySelectionService catSelection =
         Provider.of<CategorySelectionService>(context);
+    var subCategory = catSelection.selectedCategory;
     return Column(
       children: <Widget>[
         Container(
@@ -80,8 +84,17 @@ class PopularFoodTiles extends StatelessWidget {
                             child: Container(
                               height: 28,
                               width: 28,
+                              child: IsVeg == 'Yes'
+                                  ? Icon(
+                                      Icons.circle,
+                                      color: Colors.green,
+                                    )
+                                  : Icon(
+                                      Icons.circle,
+                                      color: Colors.red,
+                                    ),
                               decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
+                                  shape: BoxShape.rectangle,
                                   color: Colors.white70,
                                   boxShadow: [
                                     BoxShadow(
@@ -131,7 +144,8 @@ class PopularFoodTiles extends StatelessWidget {
                                   size: 26,
                                 ),
                                 onPressed: () {
-                                  catSelection.selectedCategory;
+                                  cartService.add(context,
+                                      CartItem(category: subCategory));
                                 },
                               ),
                             ),

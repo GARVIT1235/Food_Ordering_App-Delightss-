@@ -26,18 +26,13 @@ class CategorySelectionService extends ChangeNotifier {
 
       if (cartService.isSubCategoryAddedToCart(_selectedCategory)) {
         _instance = FirebaseFirestore.instance;
-        amount++;
         _instance
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(1)
         });
-      } else {
-        amount++;
       }
-    } else {
-      amount++;
     }
   }
 
@@ -50,28 +45,21 @@ class CategorySelectionService extends ChangeNotifier {
 
       if (cartService.isSubCategoryAddedToCart(_selectedCategory)) {
         _instance = FirebaseFirestore.instance;
-        amount--;
         _instance
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
           'cartItems.${selectedCategory.name}': FieldValue.increment(-1)
         });
-      } else {
-        amount--;
       }
-    } else {
-      amount--;
     }
   }
 
   int get subCategoryAmount {
     int subCatAmount = 0;
-    subCatAmount = amount;
-    // if (_selectedCategory != null) {
-    //   subCatAmount = amount;
-    // }
+    if (_selectedCategory != null) {
+      subCatAmount = amount;
+    }
     return subCatAmount;
-    notifyListeners();
   }
 }

@@ -3,12 +3,14 @@ import 'package:Delightss/Pages/Details.dart';
 import 'package:Delightss/Pages/Home.dart';
 import 'package:Delightss/Pages/LandingError.dart';
 import 'package:Delightss/Pages/Login.dart';
+import 'package:Delightss/Pages/RegError.dart';
 import 'package:Delightss/Pages/Setting.dart';
 import 'package:Delightss/Services/BestFood.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Services/PopularFood.dart';
 import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Services/catcartService.dart';
+import 'package:Delightss/Services/regUser.dart';
 import 'package:Delightss/Services/slider.dart';
 import 'package:Delightss/style/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,6 +33,7 @@ Future<void> main() async {
     Provider(create: (_) => BestService()),
     Provider(create: (_) => SliderService()),
     Provider(create: (_) => DetailService()),
+    Provider(create: (_) => RegUserService()),
   ], child: MyApp()));
 }
 
@@ -65,6 +68,7 @@ class MyApp extends StatelessWidget {
           '/setting': (BuildContext context) => SettingPage(),
           '/cart': (BuildContext context) => CartPage(),
           '/lerror': (BuildContext context) => LandingErrorPage(),
+          '/rerror': (BuildContext context) => RegErrorPage()
         });
   }
 }

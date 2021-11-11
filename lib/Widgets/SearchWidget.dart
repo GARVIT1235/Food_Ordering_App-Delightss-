@@ -45,6 +45,19 @@ class SearchWidget extends StatelessWidget {
                   child: TextButton(
                       onPressed: () {},
                       child: Text(
+                        'All',
+                        style: TextStyle(color: Colors.black),
+                      ))),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 2, color: AppColors.white)),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Text(
                         'Veg',
                         style: TextStyle(color: Colors.black),
                       ))),
@@ -90,19 +103,7 @@ class SearchWidget extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: AppColors.white)),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Popular Food',
-                        style: TextStyle(color: Colors.black),
-                      ))),
-              SizedBox(
-                width: 10,
-              ),
+            
             ],
           ),
         )

@@ -20,7 +20,7 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
   @override
   Widget build(BuildContext context) {
     CategorySelectionService catSelection =
-        Provider.of<CategorySelectionService>(context,listen: true);
+        Provider.of<CategorySelectionService>(context);
 
     return Column(children: [
       Padding(
@@ -42,6 +42,7 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount < MAX_VALUE
                       ? () {
+                          setState(() {});
                           print("button");
                           catSelection.incrementSubCategoryAmount(context);
                         }
@@ -70,6 +71,7 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount > MIN_VALUE
                       ? () {
+                          setState(() {});
                           catSelection.decrementSubCategoryAmount(context);
                         }
                       : null,

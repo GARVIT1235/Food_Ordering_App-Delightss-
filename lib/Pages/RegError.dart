@@ -1,5 +1,8 @@
+import 'package:Delightss/Services/Login.dart';
+import 'package:Delightss/Services/regUser.dart';
 import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegErrorPage extends StatefulWidget {
   @override
@@ -11,6 +14,21 @@ class RegErrorPageState extends State<RegErrorPage> {
   Widget build(BuildContext context) {
     final X = MediaQuery.of(context).size.width;
     final Y = MediaQuery.of(context).size.height;
+    LoginService loginService =
+        Provider.of<LoginService>(context, listen: false);
+    String uid = loginService.loggedInUserModel != null
+        ? loginService.loggedInUserModel.uid
+        : '';
+    RegUserService cat1Service =
+        Provider.of<RegUserService>(context, listen: false);
+    int detail = cat1Service.getCategoriesCollectionFromFirebase(uid) as int;
+    print(detail);
+    if (detail == 1) {
+      Navigator.of(context).pushReplacementNamed('/lerror');
+    } else {
+      Navigator.of(context).pushReplacementNamed('/detail');
+    }
+
     return Scaffold(
       backgroundColor: AppColors.main_color,
       body: Container(
