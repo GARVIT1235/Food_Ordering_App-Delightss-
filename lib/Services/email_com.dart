@@ -19,9 +19,9 @@ class Email_Com {
 
     final message = Message()
       ..from = Address(username, 'Delightss')
-      ..recipients.add('$email')
+      ..recipients.add(email)
       //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-      ..bccRecipients.add(Address('rkr31842.com'))
+      ..bccRecipients.add(('rkr31842@gmail.com'))
       ..subject = 'Order Placed :: 😀 :: ${DateTime.now()}'
       ..html = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

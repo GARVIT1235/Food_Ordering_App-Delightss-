@@ -220,7 +220,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                 ),
                 onPressed: () {
-                  loginService.addOrderToFirestore(list);
+                 // loginService.addOrderToFirestore(list);
                   DetailService cats =
                       Provider.of<DetailService>(context, listen: false);
                   List<UserModel> user = cats.getCategories();

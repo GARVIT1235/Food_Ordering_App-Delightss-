@@ -47,15 +47,17 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: catSelection.subCategoryAmount < MAX_VALUE
-                      ? () {
-                          print("button");
-                          catSelection.incrementSubCategoryAmount(
-                              context, widget.index);
-                        }
-                      : null,
+                  onTap:
+                      catSelection.subCategoryAmount(widget.index) < MAX_VALUE
+                          ? () {
+                              print("button");
+                              catSelection.incrementSubCategoryAmount(
+                                  context, widget.index);
+                            }
+                          : null,
                   child: Icon(Icons.add_circle_outline,
-                      color: catSelection.subCategoryAmount < MAX_VALUE
+                      color: catSelection.subCategoryAmount(widget.index) <
+                              MAX_VALUE
                           ? AppColors.main_color
                           : Colors.deepPurple.withOpacity(0.2)),
                 ),
@@ -67,7 +69,9 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                         return Center(
                           child: Text.rich(TextSpan(children: [
                             TextSpan(
-                              text: catSelection.subCategoryAmount.toString(),
+                              text: catSelection
+                                  .subCategoryAmount(widget.index)
+                                  .toString(),
                             ),
                           ])),
                         );
@@ -76,14 +80,16 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: catSelection.subCategoryAmount > MIN_VALUE
-                      ? () {
-                          catSelection.decrementSubCategoryAmount(
-                              context, widget.index);
-                        }
-                      : null,
+                  onTap:
+                      catSelection.subCategoryAmount(widget.index) > MIN_VALUE
+                          ? () {
+                              catSelection.decrementSubCategoryAmount(
+                                  context, widget.index);
+                            }
+                          : null,
                   child: Icon(Icons.remove_circle_outline,
-                      color: catSelection.subCategoryAmount > MIN_VALUE
+                      color: catSelection.subCategoryAmount(widget.index) >
+                              MIN_VALUE
                           ? Colors.grey
                           : Colors.grey[100]),
                 )

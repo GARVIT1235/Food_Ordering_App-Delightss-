@@ -64,10 +64,10 @@ class CategorySelectionService extends ChangeNotifier {
     }
   }
 
-  int get subCategoryAmount {
+  int subCategoryAmount(PopularCategory value) {
     int subCatAmount = 0;
-    if (_selectedCategory != null) {
-      int subcatAmount = _selectedCategory.amount;
+    if (value != null) {
+      int subcatAmount = value.amount;
       return subcatAmount;
     }
     return subCatAmount;
