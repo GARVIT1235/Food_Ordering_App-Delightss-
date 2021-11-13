@@ -36,9 +36,6 @@ class CategorySelectionService extends ChangeNotifier {
           _selectedCategory.amount++;
           notifyListeners();
         });
-      } else {
-        _selectedCategory.amount++;
-        notifyListeners();
       }
     }
   }
@@ -63,9 +60,6 @@ class CategorySelectionService extends ChangeNotifier {
           _selectedCategory.amount--;
           notifyListeners();
         });
-      } else {
-        _selectedCategory.amount--;
-        notifyListeners();
       }
     }
   }
@@ -73,7 +67,8 @@ class CategorySelectionService extends ChangeNotifier {
   int get subCategoryAmount {
     int subCatAmount = 0;
     if (_selectedCategory != null) {
-      return _selectedCategory.amount;
+      int subcatAmount = _selectedCategory.amount;
+      return subcatAmount;
     }
     return subCatAmount;
   }

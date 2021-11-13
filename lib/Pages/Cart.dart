@@ -5,7 +5,6 @@ import 'package:Delightss/Services/Details.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Services/cartService.dart';
 import 'package:Delightss/Services/email_com.dart';
-import 'package:Delightss/Services/email_sed.dart';
 import 'package:Delightss/Widgets/Drawer.dart';
 import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -227,19 +226,13 @@ class _CartPageState extends State<CartPage> {
                   List<UserModel> user = cats.getCategories();
 
                   Email_Com email = Email_Com();
-                  Email_Sen email1 = Email_Sen();
-                  email1.sendMail(
+                  email.sendMail(
                       cartService.items,
                       user[0].address,
                       loginService.loggedInUserModel.email,
                       user[0].name,
                       user[0].phone);
-                  email.sendMail(
-                      list,
-                      user[0].address,
-                      loginService.loggedInUserModel.email,
-                      user[0].name,
-                      user[0].phone);
+
                   Navigator.of(context).pushNamed("/place");
                   cartService.removeAll(context);
                 },

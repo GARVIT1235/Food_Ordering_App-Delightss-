@@ -1,10 +1,11 @@
+import 'package:Delightss/Models/Popular.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 
 class Email_Com {
-  sendMail(List list, String address, String email, String name,
-      String phone) async {
+  sendMail(List<PopularCategory> list, String address, String email,
+      String name, String phone) async {
     String username = 'minorproject597@gmail.com';
     String password = 'minor_project_G8';
     // String domainSmtp = 'mail.domain.com';
@@ -20,7 +21,7 @@ class Email_Com {
       ..from = Address(username, 'Delightss')
       ..recipients.add('$email')
       //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-      //..bccRecipients.add(Address('bccAddress@example.com'))
+      ..bccRecipients.add(Address('rkr31842.com'))
       ..subject = 'Order Placed :: 😀 :: ${DateTime.now()}'
       ..html = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -1509,7 +1510,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                  $list[0].name
+                  ${list[0].name}
                 </th>
         </tr>
       </table>
@@ -1518,7 +1519,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                 Rs $list[0].price
+                 Rs ${list[0].price}
                 </th>
         </tr>
       </table>
@@ -1527,7 +1528,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                  X $list[0].amount
+                  X ${list[0].amount}
                 </th>
         </tr>
       </table>
@@ -1545,7 +1546,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                  $list[0].price
+                  ${list[0].price * list[0].amount}
                 </th>
         </tr>
       </table>
@@ -1573,7 +1574,7 @@ class Email_Com {
        <table>
         <tr>
           <th>
-                  $list[1].name
+                  ${list[1].name}
                 </th>
         </tr>
       </table>
@@ -1582,7 +1583,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                 Rs $list[1].price
+                 Rs ${list[1].price}
                 </th>
         </tr>
       </table>
@@ -1591,7 +1592,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                  X $list[1].amount
+                  X ${list[1].amount}
                 </th>
         </tr>
       </table>
@@ -1609,7 +1610,7 @@ class Email_Com {
       <table>
         <tr>
           <th>
-                  $list[1].price
+                  ${list[1].price * list[1].amount}
                 </th>
         </tr>
       </table>
