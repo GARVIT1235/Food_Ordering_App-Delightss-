@@ -31,7 +31,7 @@ class _PopularFoodsWidgetState extends State<PopularFoodsWidget> {
   }
 }
 
-class PopularFoodTiles extends StatelessWidget {
+class PopularFoodTiles extends StatefulWidget {
   String name;
   String imageUrl;
   String numberOfRating;
@@ -49,6 +49,11 @@ class PopularFoodTiles extends StatelessWidget {
     @required this.index,
   }) : super(key: key);
 
+  @override
+  State<PopularFoodTiles> createState() => _PopularFoodTilesState();
+}
+
+class _PopularFoodTilesState extends State<PopularFoodTiles> {
   @override
   Widget build(BuildContext context) {
     CartService cartService = Provider.of<CartService>(context, listen: false);
@@ -83,7 +88,7 @@ class PopularFoodTiles extends StatelessWidget {
                             child: Container(
                               height: 28,
                               width: 28,
-                              child: IsVeg == 'Yes'
+                              child: widget.IsVeg == 'Yes'
                                   ? Icon(
                                       Icons.circle,
                                       color: Colors.green,
@@ -94,7 +99,8 @@ class PopularFoodTiles extends StatelessWidget {
                                     ),
                               decoration: BoxDecoration(
                                   shape: BoxShape.rectangle,
-                                  color: Colors.white70,
+                                  color: AppColors.secondary_color
+                                      .withOpacity(0.3),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Color(0xFFfae3e2),
@@ -109,7 +115,7 @@ class PopularFoodTiles extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Center(
                               child: Image.network(
-                            imageUrl,
+                            widget.imageUrl,
                             width: 130,
                             height: 140,
                           )),
@@ -123,7 +129,7 @@ class PopularFoodTiles extends StatelessWidget {
                         Container(
                           alignment: Alignment.bottomLeft,
                           padding: EdgeInsets.only(left: 5, top: 5),
-                          child: Text(name,
+                          child: Text(widget.name,
                               style: TextStyle(
                                   color: Color(0xFF6e6e71),
                                   fontSize: 15,
@@ -137,7 +143,7 @@ class PopularFoodTiles extends StatelessWidget {
                             width: 28,
                             child: Center(
                               child: IconButton(
-                                icon: index.amount == 0
+                                icon: widget.index.amount == 0
                                     ? Icon(
                                         Icons.add,
                                         color: Colors.black,
@@ -149,8 +155,10 @@ class PopularFoodTiles extends StatelessWidget {
                                         size: 26,
                                       ),
                                 onPressed: () {
-                                  print(index.name);
-                                  cartService.add(context, index);
+                                  print(widget.index.name);
+                                  widget.index.amount = 1;
+                                  cartService.add(context, widget.index);
+                                  setState(() {});
                                 },
                               ),
                             ),
@@ -159,7 +167,7 @@ class PopularFoodTiles extends StatelessWidget {
                       ],
                     ),
                     UnitPriceWidget(
-                      index: index,
+                      index: widget.index,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -211,7 +219,7 @@ class PopularFoodTiles extends StatelessWidget {
                             Container(
                               alignment: Alignment.topLeft,
                               padding: EdgeInsets.only(left: 5, top: 5),
-                              child: Text("($numberOfRating)",
+                              child: Text("(${widget.numberOfRating})",
                                   style: TextStyle(
                                       color: Color(0xFF6e6e71),
                                       fontSize: 10,
@@ -222,7 +230,7 @@ class PopularFoodTiles extends StatelessWidget {
                         Container(
                           alignment: Alignment.bottomLeft,
                           padding: EdgeInsets.only(left: 5, top: 5, right: 5),
-                          child: Text('Rs ' + price.toString(),
+                          child: Text('Rs ' + widget.price.toString(),
                               style: TextStyle(
                                   color: Color(0xFF6e6e71),
                                   fontSize: 12,

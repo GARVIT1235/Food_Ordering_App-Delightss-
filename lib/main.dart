@@ -20,6 +20,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'Pages/MyOrder.dart';
 import 'Pages/SplashScreen.dart';
+import 'Pages/place_order.dart';
 import 'Services/Details.dart';
 
 Future<void> main() async {
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
           '/setting': (BuildContext context) => SettingPage(),
           '/cart': (BuildContext context) => CartPage(),
           '/lerror': (BuildContext context) => LandingErrorPage(),
+          '/place': (BuildContext context) => placeOrder(),
           '/rerror': (BuildContext context) => RegErrorPage()
         });
   }

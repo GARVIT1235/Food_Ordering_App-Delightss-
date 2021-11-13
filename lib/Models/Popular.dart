@@ -4,7 +4,7 @@ class PopularCategory {
   String imgPath;
   int price;
   String isVeg;
-  int amount = 1;
+  int amount = 0;
 
   PopularCategory(
       {this.name, this.rating, this.imgPath, this.price, this.isVeg});

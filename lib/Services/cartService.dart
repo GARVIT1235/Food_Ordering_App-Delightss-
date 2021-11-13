@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 class CartService extends ChangeNotifier {
   List<PopularCategory> _items = [];
+  List<PopularCategory> its = [];
   FirebaseFirestore _instance;
 
   UnmodifiableListView<PopularCategory> get items =>
@@ -31,6 +32,12 @@ class CartService extends ChangeNotifier {
           .collection('cart')
           .doc(loginService.loggedInUserModel.uid)
           .set({'cartItems': cartMap}).then((value) {
+        notifyListeners();
+      });
+      _instance
+          .collection('Order Placed')
+          .doc(loginService.loggedInUserModel.uid)
+          .set({'Order': cartMap}).then((value) {
         notifyListeners();
       });
     }
@@ -62,6 +69,12 @@ class CartService extends ChangeNotifier {
         {'cartItems.${subCat.name}': FieldValue.delete()}).then((value) {
       (item).amount = 0;
       _items.remove(item);
+      notifyListeners();
+    });
+    _instance
+        .collection('Order Placed')
+        .doc(loginService.loggedInUserModel.uid)
+        .update({'Order.${subCat.name}': FieldValue.delete()}).then((value) {
       notifyListeners();
     });
   }
@@ -99,8 +112,8 @@ class CartService extends ChangeNotifier {
 
   void loadCartItemsFromFirebase(BuildContext context) {
     // clear the items up front
-    if (_items.length > 0) {
-      _items.clear();
+    if (its.length > 0) {
+      its.clear();
     }
 
     LoginService loginService =
@@ -113,25 +126,24 @@ class CartService extends ChangeNotifier {
     if (loginService.isUserLoggedIn()) {
       _instance = FirebaseFirestore.instance;
       _instance
-          .collection('cart')
+          .collection('Order Placed')
           .doc(loginService.loggedInUserModel.uid)
           .get()
           .then((DocumentSnapshot snapshot) {
         if (snapshot.exists) {
-          Map<String, dynamic> cartItems =
-              snapshot.get(FieldPath(['cartItems']));
+          Map<String, dynamic> cartItems = snapshot.get(FieldPath(['Order']));
 
           catService.getCategories().forEach((PopularCategory cat) {
             if (cartItems.keys.contains(cat.name)) {
               var amount = cartItems[cat.price] as int;
               (cat).price = amount;
-              _items.add(cat);
+              its.add(cat);
 
-              // force resetting the selected subcategory to trigger a rebuild on the unit price widget
-              if (categorySelectionService.selectedCategory != null &&
-                  categorySelectionService.selectedCategory.name == cat.name) {
-                categorySelectionService.selectedCategory = cat;
-              }
+              // // force resetting the selected subcategory to trigger a rebuild on the unit price widget
+              // if (categorySelectionService.selectedCategory != null &&
+              //     categorySelectionService.selectedCategory.name == cat.name) {
+              //   categorySelectionService.selectedCategory = cat;
+              // }
             }
           });
 

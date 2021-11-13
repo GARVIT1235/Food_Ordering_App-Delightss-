@@ -17,6 +17,12 @@ class LoginService extends ChangeNotifier {
         .doc(loggedInUserModel.uid)
         .set({"userDetails": usersModel});
   }
+  addOrderToFirestore(List usersModel) {
+    firebaseFirestore
+        .collection("Order Placed")
+        .doc(loggedInUserModel.uid)
+        .set({"Order": usersModel});
+  }
 
   registerToFirestore() {
     firebaseFirestore
