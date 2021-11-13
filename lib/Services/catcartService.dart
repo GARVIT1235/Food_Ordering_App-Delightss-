@@ -17,27 +17,35 @@ class CategorySelectionService extends ChangeNotifier {
     notifyListeners();
   }
 
-  void incrementSubCategoryAmount(BuildContext context) {
-    if (_selectedCategory != null) {
+  void incrementSubCategoryAmount(BuildContext context, PopularCategory value) {
+    if (value != null) {
+      _selectedCategory = value;
       LoginService loginService =
           Provider.of<LoginService>(context, listen: false);
       CartService cartService =
           Provider.of<CartService>(context, listen: false);
 
-      if (cartService.isSubCategoryAddedToCart(_selectedCategory)) {
+      if (cartService.isSubCategoryAddedToCart(value)) {
         _instance = FirebaseFirestore.instance;
         _instance
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
-          'cartItems.${selectedCategory.name}': FieldValue.increment(1)
+          'cartItems.${value.name}': FieldValue.increment(value.price)
+        }).then((value) {
+          _selectedCategory.amount++;
+          notifyListeners();
         });
+      } else {
+        _selectedCategory.amount++;
+        notifyListeners();
       }
     }
   }
 
-  void decrementSubCategoryAmount(BuildContext context) {
-    if (_selectedCategory != null) {
+  void decrementSubCategoryAmount(BuildContext context, PopularCategory value) {
+    if (value != null) {
+      _selectedCategory = value;
       LoginService loginService =
           Provider.of<LoginService>(context, listen: false);
       CartService cartService =
@@ -49,8 +57,15 @@ class CategorySelectionService extends ChangeNotifier {
             .collection('cart')
             .doc(loginService.loggedInUserModel.uid)
             .update({
-          'cartItems.${selectedCategory.name}': FieldValue.increment(-1)
+          'cartItems.${selectedCategory.name}':
+              FieldValue.increment(-(value.price))
+        }).then((value) {
+          _selectedCategory.amount--;
+          notifyListeners();
         });
+      } else {
+        _selectedCategory.amount--;
+        notifyListeners();
       }
     }
   }
@@ -58,7 +73,7 @@ class CategorySelectionService extends ChangeNotifier {
   int get subCategoryAmount {
     int subCatAmount = 0;
     if (_selectedCategory != null) {
-      subCatAmount = amount;
+      subCatAmount = _selectedCategory.amount;
     }
     return subCatAmount;
   }

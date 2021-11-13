@@ -1,3 +1,4 @@
+import 'package:Delightss/Models/Popular.dart';
 import 'package:Delightss/Services/catcartService.dart';
 import 'package:Delightss/style/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,12 @@ const int MAX_VALUE = 20;
 const int MIN_VALUE = 0;
 
 class UnitPriceWidget extends StatefulWidget {
+  PopularCategory index;
+  UnitPriceWidget({
+    Key key,
+    @required this.index,
+  }) : super(key: key);
+
   @override
   State<UnitPriceWidget> createState() => _UnitPriceWidgetState();
 }
@@ -42,9 +49,9 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount < MAX_VALUE
                       ? () {
-                          setState(() {});
                           print("button");
-                          catSelection.incrementSubCategoryAmount(context);
+                          catSelection.incrementSubCategoryAmount(
+                              context, widget.index);
                         }
                       : null,
                   child: Icon(Icons.add_circle_outline,
@@ -71,8 +78,8 @@ class _UnitPriceWidgetState extends State<UnitPriceWidget> {
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount > MIN_VALUE
                       ? () {
-                          setState(() {});
-                          catSelection.decrementSubCategoryAmount(context);
+                          catSelection.decrementSubCategoryAmount(
+                              context, widget.index);
                         }
                       : null,
                   child: Icon(Icons.remove_circle_outline,

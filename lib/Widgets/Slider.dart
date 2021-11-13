@@ -30,7 +30,6 @@ class _ImageCarouselState extends State<ImageCarousel> {
       "https://firebasestorage.googleapis.com/v0/b/delightss-31cdd.appspot.com/o/photo-1574126154517-d1e0d89ef734.jpg?alt=media&token=81e886af-28ea-475c-899a-5e628a44ed36",
       "https://firebasestorage.googleapis.com/v0/b/delightss-31cdd.appspot.com/o/vegan-salted-caramel-cookie-dough-ice-cream-sundae-two-sundaes-topped-sauce-158014826.jpg?alt=media&token=9036d9b2-ea0b-47a5-9a07-2bd399cd8b9a"
     ];
-    print(l);
     return CarouselSlider(
       items: l
           .map(

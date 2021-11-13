@@ -20,6 +20,7 @@ class DetailService {
         UserModel cat = UserModel.fromJson(catData);
         _categories.add(cat);
       });
-    }
+    } else
+      return null;
   }
 }

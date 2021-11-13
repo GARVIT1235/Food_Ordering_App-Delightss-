@@ -6,6 +6,6 @@ class RegUserModel {
   });
 
   factory RegUserModel.fromJson(Map<String, dynamic> json) {
-    return RegUserModel(detail: json['detail']);
+    return RegUserModel(detail: json['Details']);
   }
 }

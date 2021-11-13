@@ -34,19 +34,19 @@ class _PopularFoodsWidgetState extends State<PopularFoodsWidget> {
 class PopularFoodTiles extends StatelessWidget {
   String name;
   String imageUrl;
-  String rating;
   String numberOfRating;
-  String price;
+  int price;
   String IsVeg;
+  PopularCategory index;
 
   PopularFoodTiles({
     Key key,
     @required this.name,
     @required this.imageUrl,
-    @required this.rating,
     @required this.numberOfRating,
     @required this.price,
     @required this.IsVeg,
+    @required this.index,
   }) : super(key: key);
 
   @override
@@ -54,7 +54,6 @@ class PopularFoodTiles extends StatelessWidget {
     CartService cartService = Provider.of<CartService>(context, listen: false);
     CategorySelectionService catSelection =
         Provider.of<CategorySelectionService>(context);
-    var subCategory = catSelection.selectedCategory;
     return Column(
       children: <Widget>[
         Container(
@@ -138,14 +137,20 @@ class PopularFoodTiles extends StatelessWidget {
                             width: 28,
                             child: Center(
                               child: IconButton(
-                                icon: Icon(
-                                  Icons.add,
-                                  color: Colors.black,
-                                  size: 26,
-                                ),
+                                icon: index.amount == 0
+                                    ? Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: 26,
+                                      )
+                                    : Icon(
+                                        Icons.check,
+                                        color: Colors.green,
+                                        size: 26,
+                                      ),
                                 onPressed: () {
-                                  cartService.add(context,
-                                      CartItem(category: subCategory));
+                                  print(index.name);
+                                  cartService.add(context, index);
                                 },
                               ),
                             ),
@@ -153,7 +158,9 @@ class PopularFoodTiles extends StatelessWidget {
                         ),
                       ],
                     ),
-                    UnitPriceWidget(),
+                    UnitPriceWidget(
+                      index: index,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -163,7 +170,7 @@ class PopularFoodTiles extends StatelessWidget {
                             Container(
                               alignment: Alignment.topLeft,
                               padding: EdgeInsets.only(left: 5, top: 5),
-                              child: Text(rating,
+                              child: Text("",
                                   style: TextStyle(
                                       color: Color(0xFF6e6e71),
                                       fontSize: 10,
@@ -215,7 +222,7 @@ class PopularFoodTiles extends StatelessWidget {
                         Container(
                           alignment: Alignment.bottomLeft,
                           padding: EdgeInsets.only(left: 5, top: 5, right: 5),
-                          child: Text('Rs ' + price,
+                          child: Text('Rs ' + price.toString(),
                               style: TextStyle(
                                   color: Color(0xFF6e6e71),
                                   fontSize: 12,
@@ -272,7 +279,8 @@ class PopularFoodItems extends StatelessWidget {
             imageUrl: popularfood[index].imgPath,
             numberOfRating: popularfood[index].rating,
             price: popularfood[index].price,
-            IsVeg: popularfood[index].isVeg);
+            IsVeg: popularfood[index].isVeg,
+            index: popularfood[index]);
       },
     );
   }

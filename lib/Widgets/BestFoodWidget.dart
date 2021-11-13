@@ -51,7 +51,6 @@ class BestFoodTitle extends StatelessWidget {
 class BestFoodTiles extends StatelessWidget {
   String name;
   String imageUrl;
-  String rating;
   String numberOfRating;
   String price;
   String IsVeg;
@@ -60,7 +59,6 @@ class BestFoodTiles extends StatelessWidget {
       {Key key,
       @required this.name,
       @required this.imageUrl,
-      @required this.rating,
       @required this.numberOfRating,
       @required this.price,
       @required this.IsVeg})
@@ -140,7 +138,7 @@ class BestFoodTiles extends StatelessWidget {
                               Container(
                                 alignment: Alignment.topLeft,
                                 padding: EdgeInsets.only(left: 5, top: 5),
-                                child: Text(rating,
+                                child: Text("",
                                     style: TextStyle(
                                         color: Color(0xFF6e6e71),
                                         fontSize: 10,

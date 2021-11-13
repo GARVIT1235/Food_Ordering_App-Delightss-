@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             if (success) {
                               Navigator.of(context)
-                                  .pushReplacementNamed('/detail');
+                                  .pushReplacementNamed('/rerror');
                             } else {
                               CircularProgressIndicator();
                             }

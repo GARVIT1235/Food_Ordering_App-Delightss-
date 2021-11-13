@@ -20,6 +20,8 @@ class LandingErrorPageState extends State<LandingErrorPage> {
         Provider.of<DetailService>(context, listen: false);
     cat1Service.getCategoriesCollectionFromFirebase(uid).then((value) {
       Navigator.of(context).pushReplacementNamed('/home');
+    }).onError((error, stackTrace) {
+      Navigator.of(context).pushReplacementNamed('/detail');
     });
     return Scaffold(
         body: Stack(

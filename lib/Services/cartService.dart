@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'package:Delightss/Models/Popular.dart';
-import 'package:Delightss/Models/cartmodel.dart';
 import 'package:Delightss/Services/Login.dart';
 import 'package:Delightss/Services/PopularFood.dart';
 import 'package:Delightss/Services/catcartService.dart';
@@ -9,56 +8,59 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartService extends ChangeNotifier {
-  final List<CartItem> _items = [];
+  List<PopularCategory> _items = [];
   FirebaseFirestore _instance;
 
-  UnmodifiableListView<CartItem> get items => UnmodifiableListView(_items);
+  UnmodifiableListView<PopularCategory> get items =>
+      UnmodifiableListView(_items);
 
-  void add(BuildContext context, CartItem item) {
+  void add(BuildContext context, PopularCategory item) {
     _items.add(item);
 
     LoginService loginService =
         Provider.of<LoginService>(context, listen: false);
 
     Map<String, int> cartMap = Map();
-    _items.forEach((CartItem item) {
-      cartMap[item.category.name] = (item.category).price as int;
+    _items.forEach((PopularCategory item) {
+      cartMap[item.name] = (item.price);
     });
-
-    _instance = FirebaseFirestore.instance;
-    _instance
-        .collection('cart')
-        .doc(loginService.loggedInUserModel.uid)
-        .set({'cartItems': cartMap}).then((value) {
-      notifyListeners();
-    });
+    print(cartMap);
+    if (loginService.isUserLoggedIn() != null) {
+      _instance = FirebaseFirestore.instance;
+      _instance
+          .collection('cart')
+          .doc(loginService.loggedInUserModel.uid)
+          .set({'cartItems': cartMap}).then((value) {
+        notifyListeners();
+      });
+    }
   }
 
   bool isSubCategoryAddedToCart(PopularCategory cat) {
     return _items.length > 0
-        ? _items.any((CartItem item) => item.category.name == cat.name)
+        ? _items.any((PopularCategory item) => item.name == cat.name)
         : false;
   }
 
-  double getShoppingCartTotalPrice() {
-    double mainTotal = 0;
-    _items.forEach((CartItem item) {
-      PopularCategory itemSubCategory = (item.category);
-      double total = itemSubCategory.price as double;
+  int getShoppingCartTotalPrice() {
+    int mainTotal = 0;
+    _items.forEach((PopularCategory item) {
+      PopularCategory itemSubCategory = (item);
+      int total = itemSubCategory.price * itemSubCategory.amount;
       mainTotal += total;
     });
     return mainTotal;
   }
 
-  void remove(BuildContext context, CartItem item) {
+  void remove(BuildContext context, PopularCategory item) {
     LoginService loginService =
         Provider.of<LoginService>(context, listen: false);
-    PopularCategory subCat = (item.category);
+    PopularCategory subCat = (item);
 
     _instance = FirebaseFirestore.instance;
     _instance.collection('cart').doc(loginService.loggedInUserModel.uid).update(
         {'cartItems.${subCat.name}': FieldValue.delete()}).then((value) {
-      (item.category).price = 0 as String;
+      (item).amount = 0;
       _items.remove(item);
       notifyListeners();
     });
@@ -72,8 +74,8 @@ class CartService extends ChangeNotifier {
         .collection('cart')
         .doc(loginService.loggedInUserModel.uid)
         .update({'cartItems': FieldValue.delete()}).then((value) {
-      _items.forEach((CartItem item) {
-        (item.category).price = 0 as String;
+      _items.forEach((PopularCategory item) {
+        item.amount = 0;
       });
       _items.clear();
       notifyListeners();
@@ -83,12 +85,12 @@ class CartService extends ChangeNotifier {
   PopularCategory getCategoryFromCart(PopularCategory cat) {
     PopularCategory subCat = cat;
     if (_items.length > 0 &&
-        _items.any((CartItem item) => item.category.name == cat.name)) {
-      CartItem cartItem =
-          _items.firstWhere((CartItem item) => item.category.name == cat.name);
+        _items.any((PopularCategory item) => item.name == cat.name)) {
+      PopularCategory cartItem =
+          _items.firstWhere((PopularCategory item) => item.name == cat.name);
 
       if (cartItem != null) {
-        subCat = cartItem.category;
+        subCat = cartItem;
       }
     }
 
@@ -122,8 +124,8 @@ class CartService extends ChangeNotifier {
           catService.getCategories().forEach((PopularCategory cat) {
             if (cartItems.keys.contains(cat.name)) {
               var amount = cartItems[cat.price] as int;
-              (cat).price = amount as String;
-              _items.add(CartItem(category: cat));
+              (cat).price = amount;
+              _items.add(cat);
 
               // force resetting the selected subcategory to trigger a rebuild on the unit price widget
               if (categorySelectionService.selectedCategory != null &&

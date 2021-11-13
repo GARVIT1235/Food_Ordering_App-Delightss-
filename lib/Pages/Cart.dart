@@ -96,14 +96,14 @@ class _CartPageState extends State<CartPage> {
             Expanded(child: Consumer<CartService>(
               builder: (context, cart, child) {
                 List<Widget> cartItems = [];
-                double mainTotal = 0;
+                int mainTotal = 0;
 
                 if (cart.items.length > 0) {
                   mainTotal = cart.getShoppingCartTotalPrice();
 
-                  cart.items.forEach((CartItem item) {
-                    PopularCategory itemSubCategory = item.category;
-                    double total = itemSubCategory.price as double;
+                  cart.items.forEach((PopularCategory item) {
+                    PopularCategory itemSubCategory = item;
+                    int total = itemSubCategory.price;
 
                     cartItems.add(Container(
                         margin: EdgeInsets.all(10),
@@ -132,7 +132,7 @@ class _CartPageState extends State<CartPage> {
                                   Text(itemSubCategory.name,
                                       style: TextStyle(
                                           color: AppColors.main_color)),
-                                  Text('Rs ${itemSubCategory.price.toString()}',
+                                  Text('X ${itemSubCategory.amount.toString()}',
                                       style: TextStyle(color: Colors.grey)),
                                   Text('Rs ${total.toStringAsFixed(2)}',
                                       style: TextStyle(
@@ -214,7 +214,9 @@ class _CartPageState extends State<CartPage> {
                     Radius.circular(10.0),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  cartService.removeAll(context);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

@@ -7,7 +7,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginService extends ChangeNotifier {
   LoginUserModel _userModel;
-
+  List users = [
+    {"Details": "Yes"}
+  ];
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   addUserToFirestore(List usersModel) {
     firebaseFirestore
@@ -20,7 +22,7 @@ class LoginService extends ChangeNotifier {
     firebaseFirestore
         .collection("userRegister")
         .doc(loggedInUserModel.uid)
-        .set({"Details": "Yes"});
+        .set({"Details": users});
   }
 
   //DirFile file = DirFile();
