@@ -7,7 +7,7 @@ class Email_Com {
   sendMail(List<PopularCategory> list, String address, String email,
       String name, String phone) async {
     String username = 'minorproject597@gmail.com';
-    String password = 'minor_project_G8';
+    String password = 'XXXXXXXXXXXXXXXXXXXXXXXXXX';
     // String domainSmtp = 'mail.domain.com';
 
     //also use for gmail smtp
