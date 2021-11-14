@@ -5,7 +5,7 @@ import 'package:mailer/smtp_server/gmail.dart';
 class Email {
   sendMail(String dest, String name) async {
     String username = 'minorproject597@gmail.com';
-    String password = 'minor_project_G8';
+    String password = 'XXXXXXXXXXXXXXXXXXXXXXXXXXX';
     // String domainSmtp = 'mail.domain.com';
 
     //also use for gmail smtp
